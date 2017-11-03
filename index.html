@@ -17,8 +17,7 @@
   <h1><b>🎧 Phonophonia🎧 </b></h1>
   <div id="blurb">
     <h2><b>A Resoundingly Sound Collection of Sounds<b></h2><br>
-    <p>"Phono" n. Sound. Vibrations that travel through the air or another medium and can be heard when they reach a person's or animal's ear.<br> "Phonia" adj. denoting a type of plug, and the corresponding socket, used with audio and video equipment, in
-      which one conductor is cylindrical and the other is a central prong that extends beyond it.<br></p>
+    <p>"Phono" n. Sound. Vibrations that travel through the air or another medium and can be heard when they reach a person's or animal's ear.<br> "Phonia" adj. denoting a type of plug, and the corresponding socket, used with audio and video equipment.<br></p>
   </div>
   <div class="message" id='message'></div>
   <!-- AUTH FUNCTIONS-->
@@ -32,6 +31,20 @@
   <button type="button" class="btn btn-primary change-password" id="change-password-button" data-toggle="modal" data-target="#changepassword">
   Change Password
 </button>
+
+<!-- Contents -->
+
+<section class='titles'>
+  <div id='playlists'><h2>Playlists</h2></div>
+  <div id='tracks'><h2>Tracks</h2></div>
+  <div id='currentPlaylist'><h2>Current Playlist</h2></div>
+</section>
+<div class='currentPlaylist'>
+</div>
+<div class='playlists'>
+</div>
+<div class='tracks'>
+</div>
   <!-- Modal -->
   <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -114,6 +127,11 @@
       <input type="submit" name="submit" value="Sign Out">
     </fieldset>
   </form>
+    <!-- END OF AUTH FUNCTIONS -->
+
+      <!-- Footer Wrap -->
+  <div id="footerwrap">
+  <div class="container">
   <form class="form-inline">
     <div class="form-group">
       <label for="newSound" class="sr-only">New Sounds</label>
@@ -125,10 +143,6 @@
     </div>
     <button type="submit" class="btn btn-primary">Get Me Sounds</button>
   </form>
-  <!-- END OF AUTH FUNCTIONS -->
-  <!-- Footer Wrap -->
-  <div id="footerwrap">
-    <div class="container">
       <div class="col-lg-12">
         <b>Created by Madelaine Ripley</b>
       </div>
