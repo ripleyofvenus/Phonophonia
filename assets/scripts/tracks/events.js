@@ -15,8 +15,8 @@ const onNewTrack = function (event) {
 const onGetTracks = () => {
   event.preventDefault()
   api.getPlaylists()
-    .then(ui.getTasksSuccess)
-    .catch(ui.getTasksError)
+    .then(ui.getTracksSuccess)
+    .catch(ui.getTracksError)
 }
 
 const addHandlers = () => {
