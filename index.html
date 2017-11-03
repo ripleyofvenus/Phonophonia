@@ -20,8 +20,7 @@
     <p>"Phono" n. Sound. Vibrations that travel through the air or another medium and can be heard when they reach a person's or animal's ear.<br> "Phonia" adj. denoting a type of plug, and the corresponding socket, used with audio and video equipment.<br></p>
   </div>
   <div class="message" id='message'></div>
-  <!-- AUTH FUNCTIONS-->
-  <!-- buttons-->
+  <!-- AUTH FUNCTIONS BUTTONS-->
   <button type="button" class="btn btn-primary sign-up" id="sign-up-button" data-toggle="modal" data-target="#signup">
   Sign Up
 </button>
@@ -31,21 +30,82 @@
   <button type="button" class="btn btn-primary change-password" id="change-password-button" data-toggle="modal" data-target="#changepassword">
   Change Password
 </button>
+  <!-- sign out-->
+  <form id="sign-out">
+    <fieldset>
+      <h3>Sign Out</h3>
+      <input type="submit" name="submit" value="Sign Out">
+    </fieldset>
+  </form>
+  <!-- END OF AUTH FUNCTION Buttons -->
 
-<!-- Contents -->
+  <!-- Contents -->
+<div class='container'>
+  <div class='row'>
+  <div class='titles'>
+    <div class="col-lg-3 col-md-6 text-center">
+    <div id='currentPlaylist'>
+      <h2>Current Playlist</h2></div>
+    </div>
+    <div class="col-lg-3 col-md-6 text-center">
+    <div id='playlists'>
+      <h2>Playlists</h2></div>
+    </div>
+    <div class="col-lg-3 col-md-6 text-center">
+    <div id='tracks'>
+      <h2>Tracks</h2></div>
+    </div>
+  </div>
+  <div class='currentPlaylist'>
+  </div>
+  <div class='playlists'>
+  </div>
+  <div class='tracks'>
+  </div>
+</div>
+</div>
+  <!-- Footer Wrap -->
+  <div id="footerwrap">
+    <div class="container">
 
-<section class='titles'>
-  <div id='playlists'><h2>Playlists</h2></div>
-  <div id='tracks'><h2>Tracks</h2></div>
-  <div id='currentPlaylist'><h2>Current Playlist</h2></div>
-</section>
-<div class='currentPlaylist'>
+      <!-- New Sound Form -->
+
+      <button type="button" class="btn btn-primary new-sound" id="new-sound-button" data-toggle="modal" data-target="#new-sound">
+      Add Sound
+      </button>
+      <!-- Say goodnight Gracie -->
+      <div class="col-lg-12">
+        <b>Created by Madelaine Ripley</b>
+      </div>
+    </div>
+  </div>
+  <!-- New Sound Modal -->
+<div class="modal fade" id="new-sound" tabindex="-1" role="dialog" aria-labelledby="newTrackLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newSoundLabel">Title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+       </div>
+       <div class="modal-body">
+         <form id="new-sound">
+           <fieldset>
+             <input type="text" name="track[title]" value="" placeholder="Title">
+             <input type="text" name="track[artist]" value="" placeholder="Artist">
+             <input type="text" name="track[host_url]" value="" placeholder="https://...">
+             <input type="submit" class="btn btn-primary pull-right" name="submit" value="Add Track">
+           </fieldset>
+         </form>
+       </div>
+       <!-- <div class="modal-footer">
+         <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal" name="submit" value="Save">Save</button>
+       </div> -->
+     </div>
+  </div>
 </div>
-<div class='playlists'>
-</div>
-<div class='tracks'>
-</div>
-  <!-- Modal -->
+  <!-- Auth Function Modals -->
   <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -65,10 +125,10 @@
             </fieldset>
           </form>
         </div>
-        <div class="modal-footer">
+        <!-- <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -89,9 +149,9 @@
             </fieldset>
           </form>
         </div>
-        <div class="modal-footer">
+        <!-- <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -113,38 +173,10 @@
               <input type="submit" name="submit" value="Change Password">
             </fieldset>
           </form>
-          <div class="modal-footer">
+          <!-- <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
+          </div> -->
         </div>
-      </div>
-    </div>
-  </div>
-  <!-- sign out-->
-  <form id="sign-out">
-    <fieldset>
-      <h3>Sign Out</h3>
-      <input type="submit" name="submit" value="Sign Out">
-    </fieldset>
-  </form>
-    <!-- END OF AUTH FUNCTIONS -->
-
-      <!-- Footer Wrap -->
-  <div id="footerwrap">
-  <div class="container">
-  <form class="form-inline">
-    <div class="form-group">
-      <label for="newSound" class="sr-only">New Sounds</label>
-      <input type="text" readonly class="form-control-plaintext" id="newSound" value="Add to your collection...">
-    </div>
-    <div class="form-group mx-sm-3">
-      <label for="newSearch" class="sr-only">Search</label>
-      <input type="text" class="form-control" id="newSearch" placeholder="Search">
-    </div>
-    <button type="submit" class="btn btn-primary">Get Me Sounds</button>
-  </form>
-      <div class="col-lg-12">
-        <b>Created by Madelaine Ripley</b>
       </div>
     </div>
   </div>
