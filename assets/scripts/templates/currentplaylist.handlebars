@@ -1,5 +1,17 @@
-{{#each playlists as |playlist|}}
-<ul data-id="{{playlist.id}}">
-  <li>{{playlist.name}}</li>
-</ul>
-{{/each}}
+<div class="row">
+  <div class="col-sm-8 playlist-main">
+    {{#each playlists as |playlist|}}
+    {{#if this.id === playlist.id}}
+      <div class="playlist">
+        <h2 class="playlist-name">{{this.name}}</h2>
+        <p class="tracks-meta">
+          {{this.tracks.title}}
+        </p>
+        <p>
+          {{this.tracks.artist}}
+        </p>
+      </div>
+      {{/if}}
+    {{/each}}
+  </div>
+</div>
