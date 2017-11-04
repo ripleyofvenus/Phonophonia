@@ -61,6 +61,7 @@ const signOutSuccess = (data) => {
   $('#sign-up-button').show()
   $('#change-password-button').hide()
   $('#sign-out').hide()
+  clearContents()
 }
 
 const changePasswordSuccess = () => {
@@ -81,6 +82,11 @@ const changePasswordFail = () => {
 }
 
 // Contents Ui
+
+const clearContents = function () {
+  $('.contents').html('')
+}
+
 const getTracks = () => {
   tracksAPI.getTracks()
     .then(getTracksSuccess)
