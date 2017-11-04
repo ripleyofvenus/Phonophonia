@@ -2,7 +2,9 @@
 
 const store = require('./store.js')
 const showTracksTemplate = require('./templates/tracks.handlebars')
+const showPlaylistsTemplate = require('./templates/playlists.handlebars')
 const tracksAPI = require('./tracks/api')
+const playlistsAPI = require('./playlist/api')
 
 // Auth Ui
 
@@ -36,9 +38,8 @@ const signInSuccess = (data) => {
   $('#change-password-button').show()
   $('#sign-out').show()
   $('.contents').removeClass('hidden')
-  tracksAPI.getTracks()
-    .then(getTracksSuccess)
-    .catch(getTracksError)
+  getTracks()
+  getPlaylists()
 }
 
 const signInFailure = () => {
@@ -79,18 +80,45 @@ const changePasswordFail = () => {
   $('#change-password').trigger('reset')
 }
 
-// Tracks Ui
+// Contents Ui
+const getTracks = () => {
+  tracksAPI.getTracks()
+    .then(getTracksSuccess)
+    .catch(getTracksError)
+}
+
+const getPlaylists = () => {
+  playlistsAPI.getPlaylists()
+    .then(getPlaylistsSuccess)
+    .catch(getPlaylistsError)
+}
 
 const getTracksSuccess = (data) => {
   const showTracksHtml = showTracksTemplate({ tracks: data.tracks })
   $('.tracks-list').append(showTracksHtml)
-  $('#message').html('<p>Your very own tracks...<p>')
+  // $('#message').html('<p>Your very own tracks...<p>')
   $('#message').show()
   $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
 }
 
 const getTracksError = () => {
+  $('#message').html('<p>Something went wrong... did not retrieve tracks<p>')
+  $('#message').show()
+  $('#message').removeClass('hidden')
+  $('#message').delay(2000).fadeOut('2000')
+}
+
+const getPlaylistsSuccess = (data) => {
+  const showPlaylistsHtml = showPlaylistsTemplate({ playlists: data.playlists })
+  $('.playlists-list').append(showPlaylistsHtml)
+  // $('#message').html('<p>Your very own tracks...<p>')
+  $('#message').show()
+  $('#message').removeClass('hidden')
+  $('#message').delay(2000).fadeOut('2000')
+}
+
+const getPlaylistsError = () => {
   $('#message').html('<p>Something went wrong... did not retrieve tracks<p>')
   $('#message').show()
   $('#message').removeClass('hidden')
@@ -106,5 +134,7 @@ module.exports = {
   changePasswordSuccess,
   changePasswordFail,
   getTracksSuccess,
-  getTracksError
+  getTracksError,
+  getPlaylistsSuccess,
+  getPlaylistsError
 }
