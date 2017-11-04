@@ -2,6 +2,7 @@
 
 const store = require('./store.js')
 const showTracksTemplate = require('./templates/tracks.handlebars')
+const tracksAPI = require('./tracks/api')
 
 // Auth Ui
 
@@ -30,11 +31,14 @@ const signInSuccess = (data) => {
   $('#message').delay(2000).fadeOut('2000')
   $('#sign-in').trigger('reset')
   $('#signin').modal('hide')
-  $('.app-page').show()
   $('#sign-up-button').hide()
   $('#sign-in-button').hide()
   $('#change-password-button').show()
   $('#sign-out').show()
+  $('.contents').removeClass('hidden')
+  tracksAPI.getTracks()
+    .then(getTracksSuccess)
+    .catch(getTracksError)
 }
 
 const signInFailure = () => {
@@ -55,7 +59,6 @@ const signOutSuccess = (data) => {
   $('#sign-in-button').show()
   $('#sign-up-button').show()
   $('#change-password-button').hide()
-  $('.tasklist').hide()
   $('#sign-out').hide()
 }
 
@@ -80,7 +83,7 @@ const changePasswordFail = () => {
 
 const getTracksSuccess = (data) => {
   const showTracksHtml = showTracksTemplate({ tracks: data.tracks })
-  $('.table-body').append(showTracksHtml)
+  $('.track-list').append(showTracksHtml)
   $('#message').html('<p>Your very own tracks...<p>')
   $('#message').show()
   $('#message').removeClass('hidden')

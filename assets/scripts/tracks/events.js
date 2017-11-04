@@ -14,7 +14,7 @@ const onNewTrack = function (event) {
 
 const onGetTracks = () => {
   event.preventDefault()
-  api.getPlaylists()
+  api.getTracks()
     .then(ui.getTracksSuccess)
     .catch(ui.getTracksError)
 }
