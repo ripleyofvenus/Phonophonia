@@ -1,5 +1,15 @@
-{{#each tracks as |track|}}
-<ul data-id="{{track.id}}">
-  <li>{{track.name}}</li>
-</ul>
-{{/each}}
+<div class="row">
+  <div class="col-sm-8 track-main">
+    {{#each tracks as |track|}}
+      <div class="track">
+        <h2 class="track-title">{{this.title}}</h2>
+        <p class="track-meta">
+          {{this.artist}}
+        </p>
+        <p>
+          {{this.host_url}}
+        </p>
+      </div>
+    {{/each}}
+  </div>
+</div>
