@@ -3,12 +3,8 @@
     {{#each playlists as |playlist|}}
       <div class="playlist">
         <h2 class="playlist-name">{{this.name}}</h2>
-        <p class="track-meta">
-          {{this.artist}}
-        </p>
-        <p>
-          {{this.host_url}}
-        </p>
+        <button class="btn btn-info btn-sm delete-content">Delete Playlist</button>
+        <button class= "save-changes btn btn-info btn-sm">Save Changes</button>
       </div>
     {{/each}}
   </div>
