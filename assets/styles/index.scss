@@ -5,3 +5,45 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   position:fixed;
   bottom: 0;
 }
+
+.contents {
+  background: yellow;
+  position: relative;
+  height: 75%;
+  width: 800px;
+}
+
+.current-playlist-container {
+  background: red;
+  width: 70%;
+  height: 100%;
+  float: right;
+}
+
+.current-playlist-title {
+  background: blue;
+  height: 5%;
+  width: 70%;
+}
+
+.current-playlist {
+  background: green;
+  width: 70%;
+  height: 95%;
+}
+
+.tracks-container, .playlists-container {
+  width: 30%;
+  height: 50%;
+  float: right;
+}
+
+.tracks-title, .playlists-title {
+  height: 5%;
+  width: 30%;
+}
+
+.playlists-list, .tracks-list {
+  height: 50%;
+  width: 30%;
+}

@@ -83,7 +83,7 @@ const changePasswordFail = () => {
 
 const getTracksSuccess = (data) => {
   const showTracksHtml = showTracksTemplate({ tracks: data.tracks })
-  $('.track-list').append(showTracksHtml)
+  $('.tracks-list').append(showTracksHtml)
   $('#message').html('<p>Your very own tracks...<p>')
   $('#message').show()
   $('#message').removeClass('hidden')
