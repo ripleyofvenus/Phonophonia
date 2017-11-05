@@ -27,15 +27,17 @@
   <button type="button" class="btn btn-primary sign-in" id="sign-in-button" data-toggle="modal" data-target="#signin">
   Sign In
   </button>
-  <button type="button" class="btn btn-primary change-password" id="change-password-button" data-toggle="modal" data-target="#changepassword">
+  <button type="button" class="hidden btn btn-primary change-password" id="change-password-button" data-toggle="modal" data-target="#changepassword">
   Change Password
   </button>
+  <div class="hidden sign-out">
   <form id="sign-out">
     <fieldset>
       <h3>Sign Out</h3>
       <input type="submit" name="submit" value="Sign Out">
     </fieldset>
   </form>
+</div>
   <!-- END OF AUTH FUNCTION Buttons -->
 
   <!-- Contents -->
@@ -79,7 +81,7 @@
 
       <!-- New Sound Form -->
 
-      <button type="button" class="btn btn-primary new-sound" id="new-sound-button" data-toggle="modal" data-target="#new-sound">
+      <button type="button" class="hidden btn btn-primary new-sound" id="new-sound-button" data-toggle="modal" data-target="#new-sound">
       Add Sound
       </button>
       <!-- Say goodnight Gracie -->

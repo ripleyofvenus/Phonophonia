@@ -15,7 +15,7 @@ const signUpSuccess = (data) => {
   $('#message').delay(2000).fadeOut('2000')
   $('#sign-up').trigger('reset')
   $('#signup').modal('hide')
-  $('#sign-up-button').hide()
+  $('.sign-up').addClass('hidden')
 }
 
 const signUpFailure = () => {
@@ -33,11 +33,13 @@ const signInSuccess = (data) => {
   $('#message').delay(2000).fadeOut('2000')
   $('#sign-in').trigger('reset')
   $('#signin').modal('hide')
-  $('#sign-up-button').hide()
-  $('#sign-in-button').hide()
-  $('#change-password-button').show()
-  $('#sign-out').show()
+  $('.sign-up').addClass('hidden')
+  $('.sign-in').addClass('hidden')
+  $('.change-password').removeClass('hidden')
+  $('.sign-out').removeClass('hidden')
+  // $('.contents').empty()
   $('.contents').removeClass('hidden')
+  $('.new-sound').removeClass('hidden')
   getTracks()
   getPlaylists()
 }
@@ -47,7 +49,7 @@ const signInFailure = () => {
   $('#message').show()
   $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
-  $('#sign-in').trigger('reset')
+  $('.sign-in').trigger('reset')
 }
 
 const signOutSuccess = (data) => {
@@ -56,12 +58,12 @@ const signOutSuccess = (data) => {
   $('#message').show()
   $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
-  $('#tasklist').trigger('reset')
-  $('#sign-in-button').show()
-  $('#sign-up-button').show()
-  $('#change-password-button').hide()
-  $('#sign-out').hide()
-  clearContents()
+  $('.contents').addClass('hidden')
+  $('.change-password').addClass('hidden')
+  $('.sign-out').addClass('hidden')
+  $('.sign-up').removeClass('hidden')
+  $('.sign-in').removeClass('hidden')
+  $('.new-sound').addClass('hidden')
 }
 
 const changePasswordSuccess = () => {
@@ -83,10 +85,6 @@ const changePasswordFail = () => {
 
 // Contents Ui
 
-const clearContents = function () {
-  $('.contents').html('')
-}
-
 const getTracks = () => {
   tracksAPI.getTracks()
     .then(getTracksSuccess)
@@ -100,6 +98,7 @@ const getPlaylists = () => {
 }
 
 const getTracksSuccess = (data) => {
+  $('.tracks-list').empty()
   const showTracksHtml = showTracksTemplate({ tracks: data.tracks })
   $('.tracks-list').append(showTracksHtml)
   // $('#message').html('<p>Your very own tracks...<p>')
@@ -116,6 +115,7 @@ const getTracksError = () => {
 }
 
 const getPlaylistsSuccess = (data) => {
+  $('.playlists-list').empty()
   const showPlaylistsHtml = showPlaylistsTemplate({ playlists: data.playlists })
   $('.playlists-list').append(showPlaylistsHtml)
   // $('#message').html('<p>Your very own tracks...<p>')
