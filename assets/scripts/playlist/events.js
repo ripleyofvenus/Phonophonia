@@ -27,7 +27,7 @@ const onGetAPlaylist = () => {
 }
 
 const addHandlers = () => {
-  $('.add-playlist').on('submit', onNewPlaylist)
+  $('#new-playlist').on('submit', onNewPlaylist)
 }
 
 module.exports = {
