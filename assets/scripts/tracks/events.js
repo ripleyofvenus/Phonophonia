@@ -5,7 +5,6 @@ const api = require('./api')
 const ui = require('../ui')
 
 const onNewSound = function (event) {
-  console.log('onNewSound')
   event.preventDefault()
   const data = getFormFields(this)
 

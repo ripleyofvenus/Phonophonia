@@ -3,7 +3,6 @@ const config = require('./../config')
 const store = require('./../store')
 
 const newSound = function (data) {
-  console.log('newSound')
   const token = store.userData.token
   return $.ajax({
     url: config.apiOrigin + '/tracks',
