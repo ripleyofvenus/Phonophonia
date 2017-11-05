@@ -120,11 +120,20 @@ const getPlaylistsSuccess = (data) => {
   $('.playlists-list').empty()
   const showPlaylistsHtml = showPlaylistsTemplate({ playlists: data.playlists })
   $('.playlists-list').append(showPlaylistsHtml)
+  $('.select-playlist').on('click', function (event) {
+    event.preventDefault()
+    const id = $(this).parent().parent().data('id')
+    console.log(id)
+  })
   // $('#message').html('<p>Your very own tracks...<p>')
-  $('#message').show()
-  $('#message').removeClass('hidden')
-  $('#message').delay(2000).fadeOut('2000')
+  // $('#message').show()
+  // $('#message').removeClass('hidden')
+  // $('#message').delay(2000).fadeOut('2000')
 }
+
+// const onSelectPlaylist = (event) => {
+//   console.log('this is')
+// }
 
 const getPlaylistsError = () => {
   $('#message').html('<p>Something went wrong... did not retrieve tracks<p>')
