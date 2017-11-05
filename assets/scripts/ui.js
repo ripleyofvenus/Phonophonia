@@ -40,6 +40,7 @@ const signInSuccess = (data) => {
   // $('.contents').empty()
   $('.contents').removeClass('hidden')
   $('.new-sound').removeClass('hidden')
+  $('.new-playlist').removeClass('hidden')
   getTracks()
   getPlaylists()
 }
@@ -64,6 +65,7 @@ const signOutSuccess = (data) => {
   $('.sign-up').removeClass('hidden')
   $('.sign-in').removeClass('hidden')
   $('.new-sound').addClass('hidden')
+  $('.new-playlist').addClass('hidden')
 }
 
 const changePasswordSuccess = () => {
@@ -131,6 +133,21 @@ const getPlaylistsError = () => {
   $('#message').delay(2000).fadeOut('2000')
 }
 
+const newPlaylistSuccess = () => {
+  $('#message').html('<p>Sounds good to me!<p>')
+  $('#message').show()
+  $('#message').removeClass('hidden')
+  $('#message').delay(2000).fadeOut('2000')
+  $('#new-playlist').trigger('reset')
+  $('#newplaylist').modal('hide')
+}
+
+const newPlaylistError = () => {
+  $('#message').html('<p>Something went wrong adding your playlist... try again?<p>')
+  $('#message').removeClass('hidden')
+  $('#message').delay(2000).fadeOut('2000')
+}
+
 const newSoundSuccess = (data) => {
   $('#message').html('<p>Sounds good to me!<p>')
   $('#message').show()
@@ -141,7 +158,7 @@ const newSoundSuccess = (data) => {
 }
 
 const newSoundError = () => {
-  $('#message').html('<p>Something went adding your track... try again?<p>')
+  $('#message').html('<p>Something went wrong adding your track... try again?<p>')
   $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
 }
@@ -158,6 +175,8 @@ module.exports = {
   getTracksError,
   getPlaylistsSuccess,
   getPlaylistsError,
+  newPlaylistSuccess,
+  newPlaylistError,
   newSoundError,
   newSoundSuccess
 }
