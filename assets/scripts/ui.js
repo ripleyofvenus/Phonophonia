@@ -38,7 +38,6 @@ const signInSuccess = (data) => {
   $('.sign-in').addClass('hidden')
   $('.change-password').removeClass('hidden')
   $('.sign-out').removeClass('hidden')
-  // $('.contents').empty()
   $('.contents').removeClass('hidden')
   $('.new-sound').removeClass('hidden')
   $('.new-playlist').removeClass('hidden')
@@ -161,11 +160,9 @@ const newPlaylistError = () => {
 }
 
 const currentPlaylistSuccess = (data) => {
-  console.log('current playlist success')
-  console.log(data)
+  $('.current-playlist').empty()
   const showCurrentHtml = showCurrentTemplate({ playlist: data.playlist })
   $('.current-playlist').append(showCurrentHtml)
-  console.log('really tho')
 }
 
 const currentPlaylistError = () => {
@@ -173,6 +170,7 @@ const currentPlaylistError = () => {
   $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
 }
+
 const newSoundSuccess = (data) => {
   $('#message').html('<p>Sounds good to me!<p>')
   $('#message').show()
