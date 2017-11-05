@@ -1,20 +1,13 @@
-<div class="row">
-  <div class="col-sm-8 playlist-main">
-    {{#each playlists as |playlist|}}
-    {{#if this.id === playlist.id}}
-      <div class="playlist">
-        <h2 class="playlist-name">{{this.name}}</h2>
-        <p class="tracks-meta">
-          {{this.tracks.title}}
-        </p>
-        <p>
-          {{this.tracks.artist}}
-        </p>
-        <button class="btn btn-info btn-sm delete-content">Delete Track</button>
-        <button class= "edit-content btn btn-info btn-sm">Edit Content</button>
-        <button class= "save-changes btn btn-info btn-sm">Save Changes</button>
-      </div>
-      {{/if}}
-    {{/each}}
-  </div>
-</div>
+<!-- <div class="row">
+  <div class="col-sm-8 playlist-main"> -->
+  {{#each this}}
+    <ul data-id={{this.id}}>
+        <li class="current-playlist-name">{{this.name}}</li>
+        <li><button class="remove-track btn btn-info btn-sm">Remove Track</button></li>
+        <li><button class= "edit-content btn btn-info btn-sm">Edit Playlist</button></li>
+        <li><button class= "save-changes btn btn-info btn-sm">Save Changes</button></li>
+    </ul>
+  {{/each}}
+      <!-- </div> -->
+  <!-- </div>
+</div> -->

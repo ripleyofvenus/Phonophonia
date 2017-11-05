@@ -3,6 +3,7 @@
 const store = require('./store.js')
 const showTracksTemplate = require('./templates/tracks.handlebars')
 const showPlaylistsTemplate = require('./templates/playlists.handlebars')
+const showCurrentTemplate = require('./templates/currentplaylist.handlebars')
 const tracksAPI = require('./tracks/api')
 const playlistsAPI = require('./playlist/api')
 
@@ -123,7 +124,9 @@ const getPlaylistsSuccess = (data) => {
   $('.select-playlist').on('click', function (event) {
     event.preventDefault()
     const id = $(this).parent().parent().data('id')
-    console.log(id)
+    playlistsAPI.getAPlaylist(id)
+      .then(currentPlaylistSuccess)
+      .catch(currentPlaylistError)
   })
   // $('#message').html('<p>Your very own tracks...<p>')
   // $('#message').show()
@@ -157,6 +160,18 @@ const newPlaylistError = () => {
   $('#message').delay(2000).fadeOut('2000')
 }
 
+const currentPlaylistSuccess = (data) => {
+  console.log('current playlist success')
+  const showCurrentHtml = showCurrentTemplate({ playlist: data.playlist })
+  $('.current-playlist').append(showCurrentHtml)
+  console.log('really tho')
+}
+
+const currentPlaylistError = () => {
+  $('#message').html('<p>Something went wrong getting playlist... try again?<p>')
+  $('#message').removeClass('hidden')
+  $('#message').delay(2000).fadeOut('2000')
+}
 const newSoundSuccess = (data) => {
   $('#message').html('<p>Sounds good to me!<p>')
   $('#message').show()

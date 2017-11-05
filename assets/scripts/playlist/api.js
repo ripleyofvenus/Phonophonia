@@ -30,14 +30,19 @@ const getPlaylists = function () {
   })
 }
 
-const getAPlaylist = function (selectPlaylistId) {
+const getAPlaylist = function (id) {
+  const order = $('.order-by').val()
   const token = store.userData.token
+  const data = {
+    order: order
+  }
   return $.ajax({
-    url: config.apiOrigin + '/playlists/' + selectPlaylistId,
+    url: config.apiOrigin + '/playlists/' + id,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + token
-    }
+    },
+    data
   })
 }
 
