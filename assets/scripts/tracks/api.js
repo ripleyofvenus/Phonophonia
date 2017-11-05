@@ -2,7 +2,8 @@
 const config = require('./../config')
 const store = require('./../store')
 
-const newTrack = function (data) {
+const newSound = function (data) {
+  console.log('newSound')
   const token = store.userData.token
   return $.ajax({
     url: config.apiOrigin + '/tracks',
@@ -53,7 +54,7 @@ const deleteTrack = function (selectTrackId) {
 //   })
 // }
 module.exports = {
-  newTrack,
+  newSound,
   getTracks,
   deleteTrack
   // editTrack?

@@ -33,17 +33,20 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 }
 
 .tracks-container, .playlists-container {
+  background: red;
   width: 30%;
   height: 50%;
   float: right;
 }
 
 .tracks-title, .playlists-title {
+  background: blue;
   height: 5%;
   width: 30%;
 }
 
 .playlists-list, .tracks-list {
+  background: green;
   height: 50%;
   width: 30%;
 }

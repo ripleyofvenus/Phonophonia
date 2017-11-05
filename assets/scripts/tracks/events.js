@@ -4,12 +4,13 @@ const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('../ui')
 
-const onNewTrack = function (event) {
+const onNewSound = function (event) {
+  console.log('onNewSound')
   event.preventDefault()
-  const data = getFormFields(event.target)
-  api.newTrack(data)
-    .then(ui.newTrackSuccess)
-    .catch(ui.newTrackError)
+  const data = getFormFields(this)
+  api.newSound(data)
+    .then(ui.newSoundSuccess)
+    .catch(ui.newSoundError)
 }
 
 const onGetTracks = () => {
@@ -20,11 +21,11 @@ const onGetTracks = () => {
 }
 
 const addHandlers = () => {
-  $('.add-track').on('submit', onNewTrack)
+  $('#new-sound').on('submit', onNewSound)
 }
 
 module.exports = {
   addHandlers,
-  onNewTrack,
+  onNewSound,
   onGetTracks
 }

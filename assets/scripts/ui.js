@@ -131,6 +131,21 @@ const getPlaylistsError = () => {
   $('#message').delay(2000).fadeOut('2000')
 }
 
+const newSoundSuccess = (data) => {
+  $('#message').html('<p>Sounds good to me!<p>')
+  $('#message').show()
+  $('#message').removeClass('hidden')
+  $('#message').delay(2000).fadeOut('2000')
+  $('#new-sound').trigger('reset')
+  $('#newsound').modal('hide')
+}
+
+const newSoundError = () => {
+  $('#message').html('<p>Something went adding your track... try again?<p>')
+  $('#message').removeClass('hidden')
+  $('#message').delay(2000).fadeOut('2000')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -142,5 +157,7 @@ module.exports = {
   getTracksSuccess,
   getTracksError,
   getPlaylistsSuccess,
-  getPlaylistsError
+  getPlaylistsError,
+  newSoundError,
+  newSoundSuccess
 }
