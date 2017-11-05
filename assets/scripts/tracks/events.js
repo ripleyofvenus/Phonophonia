@@ -8,6 +8,7 @@ const onNewSound = function (event) {
   console.log('onNewSound')
   event.preventDefault()
   const data = getFormFields(this)
+
   api.newSound(data)
     .then(ui.newSoundSuccess)
     .catch(ui.newSoundError)
