@@ -127,15 +127,7 @@ const getPlaylistsSuccess = (data) => {
       .then(currentPlaylistSuccess)
       .catch(currentPlaylistError)
   })
-  // $('#message').html('<p>Your very own tracks...<p>')
-  // $('#message').show()
-  // $('#message').removeClass('hidden')
-  // $('#message').delay(2000).fadeOut('2000')
 }
-
-// const onSelectPlaylist = (event) => {
-//   console.log('this is')
-// }
 
 const getPlaylistsError = () => {
   $('#message').html('<p>Something went wrong... did not retrieve tracks<p>')
