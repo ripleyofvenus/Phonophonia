@@ -162,6 +162,7 @@ const newPlaylistError = () => {
 
 const currentPlaylistSuccess = (data) => {
   console.log('current playlist success')
+  console.log(data)
   const showCurrentHtml = showCurrentTemplate({ playlist: data.playlist })
   $('.current-playlist').append(showCurrentHtml)
   console.log('really tho')
