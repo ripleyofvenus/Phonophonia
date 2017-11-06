@@ -110,12 +110,15 @@ const getTracksSuccess = (data) => {
       .then(deleteTrackSuccess)
       .catch(deleteTrackFailure)
   })
+  $('.edit-track').on('click', function (event) {
+    event.preventDefault()
+    editTrackDetails()
+  })
   $('.add-to-playlist').on('click', function (event) {
     event.preventDefault()
     const thisTrackDropdown = $(this).parent().siblings()[5]
     const thisTrackSave = $(this).parent().siblings()[6]
     const thisTrackCancel = $(this).parent().siblings()[7]
-    console.log(thisTrackDropdown)
     $(thisTrackDropdown).children().removeClass('hidden')
     $(thisTrackSave).children().removeClass('hidden')
     $(thisTrackCancel).children().removeClass('hidden')
@@ -135,6 +138,10 @@ const getTracksSuccess = (data) => {
   // $('#message').show()
   // $('#message').removeClass('hidden')
   // $('#message').delay(2000).fadeOut('2000')
+}
+
+const editTrackDetails = (event) => {
+  console.log('edit')
 }
 
 const getTracksError = () => {
@@ -158,6 +165,7 @@ const getPlaylistsSuccess = (data) => {
   $('.delete-playlist').on('click', function (event) {
     event.preventDefault()
     const id = $(this).parent().parent().attr('data-id')
+    console.log(id)
     playlistsAPI.deletePlaylist(id)
       .then(deletePlaylistSuccess)
       .catch(deletePlaylistFailure)
@@ -189,9 +197,38 @@ const newPlaylistError = () => {
 
 const currentPlaylistSuccess = (data) => {
   $('.current-playlist').empty()
+  console.log(data)
   const showCurrentHtml = showCurrentTemplate({ playlist: data.playlist })
+  console.log(showCurrentHtml)
   $('.current-playlist').append(showCurrentHtml)
+//   $('.edit-current-playlist').on('click', function (event) {
+//     event.preventDefault()
+//     $('.remove-current-track').removeClass('hidden')
+//     $('.edit-current-playlist').addClass('hidden')
+//     // const id = $(this).parent().parent().data('id')
+//   })
+//   $('.remove-current-track').on('click', function (event) {
+//     event.preventDefault()
+//     const playlistID = $(this).parent().parent().parent().parent().attr('data-id')
+//     console.log(playlistID)
+//     const playlistNameTarget = $(this).parent().parent().parent().siblings()[0]
+//     const playlistName = $(playlistNameTarget).text()
+//     console.log(playlistName)
+//     const trackID = $(this).parent().parent().attr('data-id')
+//     console.log(trackID)
+//     const trackIDs = data.playlist.tracks
+//     console.log(trackIDs)
+//     const removeIndex = trackIDs.map(function (trackID) {
+//       return item.id
+//     })
+//       .indexOf("abc");
+//
+//     ~removeIndex && array.splice(removeIndex, 1);
 }
+
+// const patchPlaylist = () => {
+//
+// }
 
 const currentPlaylistError = () => {
   $('#message').html('<p>Something went wrong getting playlist... try again?<p>')
@@ -212,21 +249,15 @@ const populatePlaylistList = (data) => {
   })
 }
 
+// ISSUE HERE WITH SHOWING THE CURRENT PLAYLIST AS PREVIEW
 const selectedPlaylist = (userPlaylists, value) => {
   $('.current-playlist').empty()
   console.log(userPlaylists)
   console.log(value)
   const pickPlaylist = userPlaylists.filter(playlist => playlist.id === value)
   console.log(pickPlaylist)
-  const showCurrentHtml = showCurrentTemplate({ contents: pickPlaylist })
+  const showCurrentHtml = showCurrentTemplate({ playlist: pickPlaylist })
   $('.current-playlist').append(showCurrentHtml)
-  // $('.cancel-to-playlist').on('click', function (event) {
-  //   event.preventDefault()
-  //   $('.confirm-to-playlist').addClass('hidden')
-  //   $('.selectPlaylist').addClass('hidden')
-  //   $('.add-to-playlist').removeClass('hidden')
-  //   $('.selectPlaylist').empty()
-  // })
   $('.confirm-to-playlist').on('click', function (event) {
     event.preventDefault()
     const playlistID = value
