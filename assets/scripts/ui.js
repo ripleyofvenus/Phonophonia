@@ -112,7 +112,22 @@ const getTracksSuccess = (data) => {
   })
   $('.edit-track').on('click', function (event) {
     event.preventDefault()
-    editTrackDetails()
+    $('.save-changes').removeClass('hidden')
+    const trackID = $(this).parent().parent().attr('data-id')
+    const trackTitle = $(this).parent().siblings()[0]
+    trackTitle.contentEditable = true
+    const trackArtist = $(this).parent().siblings()[1]
+    trackArtist.contentEditable = true
+    const trackURL = $(this).parent().siblings()[2]
+    trackURL.contentEditable = true
+    $(trackTitle).css('background-color', 'rgba(39, 43, 43, 0.7)')
+    $(trackArtist).css('background-color', 'rgba(39,43,43, 0.7)')
+    $(trackURL).css('background-color', 'rgba(39,43,43, 0.7)')
+    $('.save-changes').on('click', function () {
+      onSaveTrack(trackID, trackTitle, trackArtist, trackURL)
+    })
+    $('#message').text('Ch-ch-ch-ch-changes!')
+    // editTrackDetails()
   })
   $('.add-to-playlist').on('click', function (event) {
     event.preventDefault()
@@ -140,10 +155,29 @@ const getTracksSuccess = (data) => {
   // $('#message').delay(2000).fadeOut('2000')
 }
 
-const editTrackDetails = (event) => {
-  console.log('edit')
-}
+// const editTrackDetails = (event) => {
+//
+// }
 
+const onSaveTrack = (trackID, trackTitle, trackArtist, trackURL) => {
+  console.log(trackID)
+  const id = trackID
+  const newTitle = $(trackTitle).text()
+  const newArtist = $(trackTitle).text()
+  const newURL = $(trackURL).text()
+  const data =
+{
+  track: {
+    title: newTitle,
+    artist: newArtist,
+    host_url: newURL
+  }
+}
+  tracksAPI.editTrack(data, id)
+    .then(updateTrackSuccess)
+    // .then($('.edit-content').show())
+    . catch(updateTrackError)
+}
 const getTracksError = () => {
   $('#message').html('<p>Something went wrong... did not retrieve tracks<p>')
   $('#message').show()
@@ -339,6 +373,24 @@ const updatePlaylistSuccess = () => {
 
 const updatePlaylistFailure = () => {
   $('#message').html('<p>Something went wrong updating your playlist... try again?<p>')
+  $('#message').removeClass('hidden')
+  $('#message').delay(2000).fadeOut('2000')
+}
+
+const updateTrackSuccess = () => {
+  $('#message').html('<p>Sounds good to me!<p>')
+  $('#message').removeClass('hidden')
+  $('#message').delay(2000).fadeOut('2000')
+  $('.selectPlaylist').empty()
+  $('.current-playlist').empty()
+  $('.tracks-list').empty()
+  $('.playlists-list').empty()
+  getTracks()
+  getPlaylists()
+}
+
+const updateTrackError = () => {
+  $('#message').html('<p>Something went wrong updating your track... try again?<p>')
   $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
 }

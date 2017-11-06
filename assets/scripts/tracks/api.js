@@ -40,21 +40,24 @@ const deleteTrack = function (id) {
     }
   })
 }
-// ???
-// const editTrack = function (selectTrackId, data) {
-//   const token = store.userData.token
-//   return $.ajax({
-//     url: config.apiOrigin + '/playlists/' + selectTrackId,
-//     method: 'PATCH',
-//     headers: {
-//       Authorization: 'Token token=' + token
-//     },
-//     data
-//   })
-// }
+
+const editTrack = function (data, id) {
+  console.log(data)
+  console.log(id)
+  const token = store.userData.token
+  return $.ajax({
+    url: config.apiOrigin + '/tracks/' + id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + token
+    },
+    data
+  })
+}
+
 module.exports = {
   newSound,
   getTracks,
-  deleteTrack
-  // editTrack?
+  deleteTrack,
+  editTrack
 }
