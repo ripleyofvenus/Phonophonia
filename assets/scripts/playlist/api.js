@@ -46,10 +46,10 @@ const getAPlaylist = function (id) {
   })
 }
 
-const deletePlaylist = function (selectPlaylistId) {
+const deletePlaylist = function (id) {
   const token = store.userData.token
   return $.ajax({
-    url: config.apiOrigin + '/playlists/' + selectPlaylistId,
+    url: config.apiOrigin + '/playlists/' + id,
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + token

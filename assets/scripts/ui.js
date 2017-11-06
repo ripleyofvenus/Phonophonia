@@ -134,6 +134,13 @@ const getPlaylistsSuccess = (data) => {
       .then(currentPlaylistSuccess)
       .catch(currentPlaylistError)
   })
+  $('.delete-playlist').on('click', function (event) {
+    event.preventDefault()
+    const id = $(this).parent().parent().attr('data-id')
+    playlistsAPI.deletePlaylist(id)
+      .then(deletePlaylistSuccess)
+      .catch(deletePlaylistFailure)
+  })
 }
 
 const getPlaylistsError = () => {
@@ -196,6 +203,22 @@ const deleteTrackSuccess = () => {
 }
 
 const deleteTrackFailure = () => {
+  $('#message').html('<p>Something went wrong deleting your track... try again?<p>')
+  $('#message').removeClass('hidden')
+  $('#message').delay(2000).fadeOut('2000')
+}
+
+const deletePlaylistSuccess = () => {
+  $('#message').html('<p>You will not hear them here anymore...<p>')
+  $('#message').show()
+  $('#message').removeClass('hidden')
+  $('#message').delay(2000).fadeOut('2000')
+  playlistsAPI.getPlaylists()
+    .then(getPlaylistsSuccess)
+    .catch(getPlaylistsError)
+}
+
+const deletePlaylistFailure = () => {
   $('#message').html('<p>Something went wrong deleting your track... try again?<p>')
   $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
