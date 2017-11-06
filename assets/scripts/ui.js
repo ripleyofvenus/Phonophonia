@@ -106,7 +106,9 @@ const getTracksSuccess = (data) => {
   $('.delete-track').on('click', function (event) {
     event.preventDefault()
     const id = $(this).parent().parent().attr('data-id')
-    console.log(id)
+    tracksAPI.deleteTrack(id)
+      .then(deleteTrackSuccess)
+      .catch(deleteTrackFailure)
   })
   // $('#message').html('<p>Your very own tracks...<p>')
   $('#message').show()
@@ -179,6 +181,22 @@ const newSoundSuccess = (data) => {
 
 const newSoundError = () => {
   $('#message').html('<p>Something went wrong adding your track... try again?<p>')
+  $('#message').removeClass('hidden')
+  $('#message').delay(2000).fadeOut('2000')
+}
+
+const deleteTrackSuccess = () => {
+  $('#message').html('<p>You will not hear them here anymore...<p>')
+  $('#message').show()
+  $('#message').removeClass('hidden')
+  $('#message').delay(2000).fadeOut('2000')
+  tracksAPI.getTracks()
+    .then(getTracksSuccess)
+    .catch(getTracksError)
+}
+
+const deleteTrackFailure = () => {
+  $('#message').html('<p>Something went wrong deleting your track... try again?<p>')
   $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
 }

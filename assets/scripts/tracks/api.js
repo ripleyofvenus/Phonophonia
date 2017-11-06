@@ -30,10 +30,10 @@ const getTracks = function () {
   })
 }
 
-const deleteTrack = function (selectTrackId) {
+const deleteTrack = function (id) {
   const token = store.userData.token
   return $.ajax({
-    url: config.apiOrigin + '/tracks/' + selectTrackId,
+    url: config.apiOrigin + '/tracks/' + id,
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + token
