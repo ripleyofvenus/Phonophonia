@@ -189,15 +189,28 @@ const populatePlaylistList = (data) => {
   console.log(data)
   $('#selectPlaylist').append($('<option value=0>Select your Mix</option>'))
   const userPlaylists = data.playlists.filter(playlists => playlists.user_id === store.userData.id)
-  console.log(store.userData)
-  console.log(userPlaylists)
   $.each(userPlaylists, function (index, value) {
-    $('#selectPlaylist').append($('<option></option>').val(value._id).html(value.name))
+    $('#selectPlaylist').append($('<option></option>').val(value.id).html(value.name))
+  })
+  $('#selectPlaylist').on('change', function () {
+    const value = $(this).val()
+    console.log(value)
+    selectedPlaylist(userPlaylists, value)
   })
 }
 
-const populatePlaylistError = () => {
+const selectedPlaylist = (userPlaylists, value) => {
+  console.log(userPlaylists)
+  console.log('this is value=' + value)
+  const pickPlaylist = userPlaylists.filter(playlist => playlist.id === value)
+  const showCurrentHtml = showCurrentTemplate({ contents: pickPlaylist })
+  $('.current-playlist').append(showCurrentHtml)
+}
 
+const populatePlaylistError = () => {
+  $('#message').html('<p>Something went wrong getting your playlists... try again?<p>')
+  $('#message').removeClass('hidden')
+  $('#message').delay(2000).fadeOut('2000')
 }
 
 const newSoundSuccess = (data) => {
