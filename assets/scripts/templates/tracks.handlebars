@@ -2,15 +2,13 @@
   <div class="col-sm-8 track-main">
     {{#each tracks as |track|}}
       <div class="track">
-        <h2 class="track-title">{{this.title}}</h2>
-        <p class="track-meta">
-          {{this.artist}}
-        </p>
-        <p>
-          {{this.host_url}}
-        </p>
-        <button class="btn btn-info btn-sm delete-content">Delete Track</button>
-        <button class= "save-changes btn btn-info btn-sm">Save Changes</button>
+      <ul data-id={{this.id}}>
+        <li><h2 class="track-title">{{this.title}}</h2></li>
+        <li><p class="track-meta">{{this.artist}}</p></li>
+        <li><p>{{this.host_url}}</p></li>
+        <li><button class="btn btn-info btn-sm delete-track">Delete Track</button></li>
+        <li><button class= "save-changes btn btn-info btn-sm">Save Changes</button></li>
+      </ul>
       </div>
     {{/each}}
   </div>

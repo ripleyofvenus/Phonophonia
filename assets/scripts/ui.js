@@ -103,6 +103,11 @@ const getTracksSuccess = (data) => {
   $('.tracks-list').empty()
   const showTracksHtml = showTracksTemplate({ tracks: data.tracks })
   $('.tracks-list').append(showTracksHtml)
+  $('.delete-track').on('click', function (event) {
+    event.preventDefault()
+    const id = $(this).parent().parent().attr('data-id')
+    console.log(id)
+  })
   // $('#message').html('<p>Your very own tracks...<p>')
   $('#message').show()
   $('#message').removeClass('hidden')
