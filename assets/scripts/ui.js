@@ -113,9 +113,21 @@ const getTracksSuccess = (data) => {
   $('.add-to-playlist').on('click', function (event) {
     event.preventDefault()
     const thisTrackDropdown = $(this).parent().siblings()[5]
+    const thisTrackSave = $(this).parent().siblings()[6]
+    const thisTrackCancel = $(this).parent().siblings()[7]
     console.log(thisTrackDropdown)
     $(thisTrackDropdown).children().removeClass('hidden')
+    $(thisTrackSave).children().removeClass('hidden')
+    $(thisTrackCancel).children().removeClass('hidden')
     $('.add-to-playlist').addClass('hidden')
+    $('.cancel-to-playlist').on('click', function (event) {
+      event.preventDefault()
+      $('.confirm-to-playlist').addClass('hidden')
+      $('.selectPlaylist').addClass('hidden')
+      $('.add-to-playlist').removeClass('hidden')
+      $('.selectPlaylist').empty()
+      $('.cancel-to-playlist').addClass('hidden')
+    })
     playlistsAPI.getPlaylists()
       .then(populatePlaylistList)
       .catch(populatePlaylistError)
@@ -201,9 +213,20 @@ const populatePlaylistList = (data) => {
 }
 
 const selectedPlaylist = (userPlaylists, value) => {
+  $('.current-playlist').empty()
+  console.log(userPlaylists)
+  console.log(value)
   const pickPlaylist = userPlaylists.filter(playlist => playlist.id === value)
+  console.log(pickPlaylist)
   const showCurrentHtml = showCurrentTemplate({ contents: pickPlaylist })
   $('.current-playlist').append(showCurrentHtml)
+  // $('.cancel-to-playlist').on('click', function (event) {
+  //   event.preventDefault()
+  //   $('.confirm-to-playlist').addClass('hidden')
+  //   $('.selectPlaylist').addClass('hidden')
+  //   $('.add-to-playlist').removeClass('hidden')
+  //   $('.selectPlaylist').empty()
+  // })
   $('.confirm-to-playlist').on('click', function (event) {
     event.preventDefault()
     const playlistID = value
