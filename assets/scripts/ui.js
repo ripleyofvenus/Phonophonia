@@ -112,6 +112,10 @@ const getTracksSuccess = (data) => {
   })
   $('.add-to-playlist').on('click', function (event) {
     event.preventDefault()
+    const thisTrackDropdown = $(this).parent().siblings()[5]
+    console.log(thisTrackDropdown)
+    $(thisTrackDropdown).children().removeClass('hidden')
+    $('.add-to-playlist').addClass('hidden')
     playlistsAPI.getPlaylists()
       .then(populatePlaylistList)
       .catch(populatePlaylistError)
@@ -162,9 +166,7 @@ const newPlaylistSuccess = () => {
   $('#message').delay(2000).fadeOut('2000')
   $('#new-playlist').trigger('reset')
   $('#newplaylist').modal('hide')
-  playlistsAPI.getPlaylists()
-    .then(getPlaylistsSuccess)
-    .catch(getPlaylistsError)
+  getPlaylists()
 }
 
 const newPlaylistError = () => {
@@ -186,31 +188,26 @@ const currentPlaylistError = () => {
 }
 
 const populatePlaylistList = (data) => {
-  console.log(data)
-  $('#selectPlaylist').append($('<option value=0>Select your Mix</option>'))
+  $('.selectPlaylist').empty()
+  $('.selectPlaylist').append($('<option value=0>Select your Mix</option>'))
   const userPlaylists = data.playlists.filter(playlists => playlists.user_id === store.userData.id)
   $.each(userPlaylists, function (index, value) {
-    $('#selectPlaylist').append($('<option></option>').val(value.id).html(value.name))
+    $('.selectPlaylist').append($('<option></option>').val(value.id).html(value.name))
   })
-  $('#selectPlaylist').on('change', function () {
+  $('.selectPlaylist').on('change', function () {
     const value = $(this).val()
-    console.log(value)
     selectedPlaylist(userPlaylists, value)
   })
 }
 
 const selectedPlaylist = (userPlaylists, value) => {
-  console.log(userPlaylists)
-  console.log('this is value=' + value)
   const pickPlaylist = userPlaylists.filter(playlist => playlist.id === value)
   const showCurrentHtml = showCurrentTemplate({ contents: pickPlaylist })
   $('.current-playlist').append(showCurrentHtml)
   $('.confirm-to-playlist').on('click', function (event) {
     event.preventDefault()
     const playlistID = value
-    console.log(playlistID)
     const trackID = $(this).parent().parent().attr('data-id')
-    console.log(trackID)
     const data =
     {
       playlist_track: {
@@ -237,9 +234,7 @@ const newSoundSuccess = (data) => {
   $('#message').delay(2000).fadeOut('2000')
   $('#new-sound').trigger('reset')
   $('#newsound').modal('hide')
-  tracksAPI.getTracks()
-    .then(getTracksSuccess)
-    .catch(getTracksError)
+  getTracks()
 }
 
 const newSoundError = () => {
@@ -253,9 +248,7 @@ const deleteTrackSuccess = () => {
   $('#message').show()
   $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
-  tracksAPI.getTracks()
-    .then(getTracksSuccess)
-    .catch(getTracksError)
+  getTracks()
 }
 
 const deleteTrackFailure = () => {
@@ -269,9 +262,7 @@ const deletePlaylistSuccess = () => {
   $('#message').show()
   $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
-  playlistsAPI.getPlaylists()
-    .then(getPlaylistsSuccess)
-    .catch(getPlaylistsError)
+  getPlaylists()
 }
 
 const deletePlaylistFailure = () => {
@@ -284,6 +275,12 @@ const updatePlaylistSuccess = () => {
   $('#message').html('<p>Sounds good to me!<p>')
   $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
+  $('.selectPlaylist').empty()
+  $('.current-playlist').empty()
+  $('.tracks-list').empty()
+  $('.playlists-list').empty()
+  getTracks()
+  getPlaylists()
 }
 
 const updatePlaylistFailure = () => {
