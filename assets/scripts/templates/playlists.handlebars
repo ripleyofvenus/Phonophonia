@@ -2,10 +2,10 @@
   <div class="col-sm-8 blog-main"> -->
     {{#each playlists as |playlist|}}
       <ul data-id="{{playlist.id}}">
-        <li class="playlist-name">{{this.name}}</li>
+        <li><h2 class="playlist-name">{{this.name}}</h2></li>
         <li><button class= "select-playlist btn btn-info btn-sm">Select Playlist</button></li>
         <li><button class="delete-playlist btn btn-info btn-sm">Delete Playlist</button></li>
-        <li><button class= "save-changes btn btn-info btn-sm">Save Changes</button></li>
+        <li><button class= "save-changes hidden btn btn-info btn-sm">Save Changes</button></li>
       </ul>
       </div>
     {{/each}}
