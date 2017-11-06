@@ -157,6 +157,9 @@ const newPlaylistSuccess = () => {
   $('#message').delay(2000).fadeOut('2000')
   $('#new-playlist').trigger('reset')
   $('#newplaylist').modal('hide')
+  playlistsAPI.getPlaylists()
+    .then(getPlaylistsSuccess)
+    .catch(getPlaylistsError)
 }
 
 const newPlaylistError = () => {
@@ -184,6 +187,9 @@ const newSoundSuccess = (data) => {
   $('#message').delay(2000).fadeOut('2000')
   $('#new-sound').trigger('reset')
   $('#newsound').modal('hide')
+  tracksAPI.getTracks()
+    .then(getTracksSuccess)
+    .catch(getTracksError)
 }
 
 const newSoundError = () => {
