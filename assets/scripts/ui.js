@@ -110,10 +110,15 @@ const getTracksSuccess = (data) => {
       .then(deleteTrackSuccess)
       .catch(deleteTrackFailure)
   })
-  // $('#message').html('<p>Your very own tracks...<p>')
-  $('#message').show()
-  $('#message').removeClass('hidden')
-  $('#message').delay(2000).fadeOut('2000')
+  $('.add-to-playlist').on('click', function (event) {
+    event.preventDefault()
+    playlistsAPI.getPlaylists()
+      .then(populatePlaylistList)
+      .catch(populatePlaylistError)
+  })
+  // $('#message').show()
+  // $('#message').removeClass('hidden')
+  // $('#message').delay(2000).fadeOut('2000')
 }
 
 const getTracksError = () => {
@@ -178,6 +183,21 @@ const currentPlaylistError = () => {
   $('#message').html('<p>Something went wrong getting playlist... try again?<p>')
   $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
+}
+
+const populatePlaylistList = (data) => {
+  console.log(data)
+  $('#selectPlaylist').append($('<option value=0>Select your Mix</option>'))
+  const userPlaylists = data.playlists.filter(playlists => playlists.user_id === store.userData.id)
+  console.log(store.userData)
+  console.log(userPlaylists)
+  $.each(userPlaylists, function (index, value) {
+    $('#selectPlaylist').append($('<option></option>').val(value._id).html(value.name))
+  })
+}
+
+const populatePlaylistError = () => {
+
 }
 
 const newSoundSuccess = (data) => {
