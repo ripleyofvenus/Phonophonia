@@ -205,6 +205,23 @@ const selectedPlaylist = (userPlaylists, value) => {
   const pickPlaylist = userPlaylists.filter(playlist => playlist.id === value)
   const showCurrentHtml = showCurrentTemplate({ contents: pickPlaylist })
   $('.current-playlist').append(showCurrentHtml)
+  $('.confirm-to-playlist').on('click', function (event) {
+    event.preventDefault()
+    const playlistID = value
+    console.log(playlistID)
+    const trackID = $(this).parent().parent().attr('data-id')
+    console.log(trackID)
+    const data =
+    {
+      playlist_track: {
+        playlist_id: playlistID,
+        track_id: trackID
+      }
+    }
+    playlistsAPI.addTrackToPlaylist(data)
+      .then(updatePlaylistSuccess)
+      .catch(updatePlaylistFailure)
+  })
 }
 
 const populatePlaylistError = () => {
@@ -259,6 +276,18 @@ const deletePlaylistSuccess = () => {
 
 const deletePlaylistFailure = () => {
   $('#message').html('<p>Something went wrong deleting your track... try again?<p>')
+  $('#message').removeClass('hidden')
+  $('#message').delay(2000).fadeOut('2000')
+}
+
+const updatePlaylistSuccess = () => {
+  $('#message').html('<p>Sounds good to me!<p>')
+  $('#message').removeClass('hidden')
+  $('#message').delay(2000).fadeOut('2000')
+}
+
+const updatePlaylistFailure = () => {
+  $('#message').html('<p>Something went wrong updating your playlist... try again?<p>')
   $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
 }

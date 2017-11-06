@@ -68,10 +68,24 @@ const editPlaylist = function (selectPlaylistId, data) {
     data
   })
 }
+
+const addTrackToPlaylist = function (data) {
+  const token = store.userData.token
+  return $.ajax({
+    url: config.apiOrigin + '/playlist_tracks',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + token
+    },
+    data
+  })
+}
+
 module.exports = {
   newPlaylist,
   getPlaylists,
   getAPlaylist,
   deletePlaylist,
-  editPlaylist
+  editPlaylist,
+  addTrackToPlaylist
 }
