@@ -42,8 +42,6 @@ const deleteTrack = function (id) {
 }
 
 const editTrack = function (data, id) {
-  console.log(data)
-  console.log(id)
   const token = store.userData.token
   return $.ajax({
     url: config.apiOrigin + '/tracks/' + id,

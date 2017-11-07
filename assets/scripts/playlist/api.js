@@ -58,8 +58,6 @@ const deletePlaylist = function (id) {
 }
 
 const editPlaylist = function (data, id) {
-  console.log(id)
-  console.log(data)
   const token = store.userData.token
   return $.ajax({
     url: config.apiOrigin + '/playlists/' + id,

@@ -154,7 +154,6 @@ const getTracksSuccess = (data) => {
 }
 
 const onSaveTrack = (trackID, trackTitle, trackArtist, trackURL) => {
-  console.log(trackID)
   const id = trackID
   const newTitle = $(trackTitle).text()
   const newArtist = $(trackArtist).text()
@@ -193,9 +192,7 @@ const getPlaylistsSuccess = (data) => {
     event.preventDefault()
     $('.save-changes-playlist').removeClass('hidden')
     const playlistID = $(this).parent().parent().attr('data-id')
-    console.log(playlistID)
     const playlistName = $(this).parent().siblings()[0]
-    console.log(playlistName)
     playlistName.contentEditable = true
     // $(trackTitle).css('background-color', 'rgba(39, 43, 43, 0.7)')
     // $(trackArtist).css('background-color', 'rgba(39,43,43, 0.7)')
@@ -208,7 +205,6 @@ const getPlaylistsSuccess = (data) => {
   $('.delete-playlist').on('click', function (event) {
     event.preventDefault()
     const id = $(this).parent().parent().attr('data-id')
-    console.log(id)
     playlistsAPI.deletePlaylist(id)
       .then(deletePlaylistSuccess)
       .catch(deletePlaylistFailure)
@@ -258,7 +254,6 @@ const currentPlaylistSuccess = (data) => {
     const playlistID = $(this).parent().parent().parent().parent().attr('data-id')
     const playlistNameTarget = $(this).parent().parent().parent().siblings()[0]
     const playlistName = $(playlistNameTarget).text()
-    console.log(playlistName)
     const trackID = $(this).parent().parent().attr('data-id')
     const trackIDs = data.playlist.tracks
     const newIDs = trackIDs.filter(function (obj) {
@@ -273,7 +268,6 @@ const currentPlaylistSuccess = (data) => {
 }
 
 const updateCurrentPlaylist = (playlistID, playlistName, justIDs) => {
-  console.log(playlistID)
   const id = playlistID
   const newTrackIDs = justIDs
 
@@ -311,10 +305,7 @@ const populatePlaylistList = (data) => {
 // ISSUE HERE WITH SHOWING THE CURRENT PLAYLIST AS PREVIEW
 const selectedPlaylist = (userPlaylists, value) => {
   $('.current-playlist').empty()
-  console.log(userPlaylists)
-  console.log(value)
   const pickPlaylist = userPlaylists.filter(playlist => playlist.id === value)
-  console.log(pickPlaylist)
   const showCurrentHtml = showCurrentTemplate({ playlist: pickPlaylist })
   $('.current-playlist').append(showCurrentHtml)
   $('.confirm-to-playlist').on('click', function (event) {

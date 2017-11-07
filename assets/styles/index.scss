@@ -7,46 +7,46 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 }
 
 .contents {
-  background: yellow;
+  // background: yellow;
   position: relative;
   height: 75%;
   width: 800px;
 }
 
 .current-playlist-container {
-  background: red;
+  // background: red;
   width: 70%;
   height: 100%;
   float: right;
 }
 
 .current-playlist-title {
-  background: blue;
+  // background: blue;
   height: 5%;
   width: 70%;
 }
 
 .current-playlist {
-  background: green;
+  // background: green;
   width: 70%;
   height: 95%;
 }
 
 .tracks-container, .playlists-container {
-  background: red;
+  // background: red;
   width: 30%;
   height: 50%;
   float: right;
 }
 
 .tracks-title, .playlists-title {
-  background: blue;
+  // background: blue;
   height: 5%;
   width: 30%;
 }
 
 .playlists-list, .tracks-list {
-  background: green;
+  // background: green;
   height: 50%;
   width: 30%;
 }
