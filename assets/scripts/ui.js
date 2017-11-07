@@ -113,6 +113,7 @@ const getTracksSuccess = (data) => {
   $('.edit-track').on('click', function (event) {
     event.preventDefault()
     $('.save-changes').removeClass('hidden')
+    $('.cancel-to-playlist').removeClass('hidden')
     const trackID = $(this).parent().parent().attr('data-id')
     const trackTitle = $(this).parent().siblings()[0]
     trackTitle.contentEditable = true
@@ -128,6 +129,15 @@ const getTracksSuccess = (data) => {
     })
     $('#message').text('Ch-ch-ch-ch-changes!')
   })
+  $('.cancel-to-playlist').on('click', function (event) {
+    event.preventDefault()
+    $('.confirm-to-playlist').addClass('hidden')
+    $('.selectPlaylist').addClass('hidden')
+    $('.add-to-playlist').removeClass('hidden')
+    $('.selectPlaylist').empty()
+    $('.cancel-to-playlist').addClass('hidden')
+    $('.save-changes').addClass('hidden')
+  })
   $('.add-to-playlist').on('click', function (event) {
     event.preventDefault()
     const thisTrackDropdown = $(this).parent().siblings()[5]
@@ -137,14 +147,6 @@ const getTracksSuccess = (data) => {
     $(thisTrackSave).children().removeClass('hidden')
     $(thisTrackCancel).children().removeClass('hidden')
     $('.add-to-playlist').addClass('hidden')
-    $('.cancel-to-playlist').on('click', function (event) {
-      event.preventDefault()
-      $('.confirm-to-playlist').addClass('hidden')
-      $('.selectPlaylist').addClass('hidden')
-      $('.add-to-playlist').removeClass('hidden')
-      $('.selectPlaylist').empty()
-      $('.cancel-to-playlist').addClass('hidden')
-    })
     playlistsAPI.getPlaylists()
       .then(populatePlaylistList)
       .catch(populatePlaylistError)
@@ -244,6 +246,12 @@ const currentPlaylistSuccess = (data) => {
     event.preventDefault()
     $('.remove-current-track').removeClass('hidden')
     $('.edit-current-playlist').addClass('hidden')
+    $('.cancel-changes-current').removeClass('hidden')
+  })
+  $('.cancel-changes-current').on('click', function (event) {
+    $('.remove-current-track').addClass('hidden')
+    $('.edit-current-playlist').removeClass('hidden')
+    $('.cancel-changes-current').addClass('hidden')
   })
   $('.remove-current-track').on('click', function (event) {
     event.preventDefault()
