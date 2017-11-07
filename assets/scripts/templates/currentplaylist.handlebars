@@ -2,16 +2,17 @@
   <div class="col-sm-8 playlist-main"> -->
   {{#each this}}
     <ul data-id={{this.id}}>
-        <li class="current-playlist-name">{{this.name}}</li>
+        <li><h2 class="current-playlist-name">{{this.name}}</h2></li>
         <li class="current-playlist-tracks">
-          <ul> {{#each this.tracks}}
-            <li>Title: {{title}}</li>
+           {{#each this.tracks}}
+           <ul data-id={{this.id}}>
+            <li><h3>Title: {{title}}</h3></li>
             <li>Artist: {{artist}}</li>
             <li>Src: {{host_url}}</li>
-            <li><button class="remove-track hidden btn btn-info btn-sm">Remove Track</button></li>
-            <li><button class= "save-changes hidden btn btn-info btn-sm">Save Changes</button></li>
+            <li><button class="remove-current-track hidden btn btn-info btn-sm">Remove Track</button></li>
+            <li><button class= "save-changes-current hidden btn btn-info btn-sm">Save Changes</button></li>
           </ul>{{/each}}
-        <li><button class= "edit-content btn btn-info btn-sm">Edit Playlist</button></li>
+        <li><button class= "edit-current-playlist btn btn-info btn-sm">Edit Playlist</button></li>
     </ul>
   {{/each}}
       <!-- </div> -->

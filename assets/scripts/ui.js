@@ -127,7 +127,6 @@ const getTracksSuccess = (data) => {
       onSaveTrack(trackID, trackTitle, trackArtist, trackURL)
     })
     $('#message').text('Ch-ch-ch-ch-changes!')
-    // editTrackDetails()
   })
   $('.add-to-playlist').on('click', function (event) {
     event.preventDefault()
@@ -175,7 +174,6 @@ const onSaveTrack = (trackID, trackTitle, trackArtist, trackURL) => {
 }
   tracksAPI.editTrack(data, id)
     .then(updateTrackSuccess)
-    // .then($('.edit-content').show())
     . catch(updateTrackError)
 }
 const getTracksError = () => {
@@ -195,6 +193,22 @@ const getPlaylistsSuccess = (data) => {
     playlistsAPI.getAPlaylist(id)
       .then(currentPlaylistSuccess)
       .catch(currentPlaylistError)
+  })
+  $('.edit-playlist').on('click', function (event) {
+    event.preventDefault()
+    $('.save-changes-playlist').removeClass('hidden')
+    const playlistID = $(this).parent().parent().attr('data-id')
+    console.log(playlistID)
+    const playlistName = $(this).parent().siblings()[0]
+    console.log(playlistName)
+    playlistName.contentEditable = true
+    // $(trackTitle).css('background-color', 'rgba(39, 43, 43, 0.7)')
+    // $(trackArtist).css('background-color', 'rgba(39,43,43, 0.7)')
+    // $(trackURL).css('background-color', 'rgba(39,43,43, 0.7)')
+    // $('.save-changes').on('click', function () {
+    //   onSaveTrack(trackID, trackTitle, trackArtist, trackURL)
+    // })
+    // $('#message').text('Ch-ch-ch-ch-changes!')
   })
   $('.delete-playlist').on('click', function (event) {
     event.preventDefault()
@@ -231,38 +245,36 @@ const newPlaylistError = () => {
 
 const currentPlaylistSuccess = (data) => {
   $('.current-playlist').empty()
-  console.log(data)
   const showCurrentHtml = showCurrentTemplate({ playlist: data.playlist })
-  console.log(showCurrentHtml)
   $('.current-playlist').append(showCurrentHtml)
-//   $('.edit-current-playlist').on('click', function (event) {
-//     event.preventDefault()
-//     $('.remove-current-track').removeClass('hidden')
-//     $('.edit-current-playlist').addClass('hidden')
-//     // const id = $(this).parent().parent().data('id')
-//   })
-//   $('.remove-current-track').on('click', function (event) {
-//     event.preventDefault()
-//     const playlistID = $(this).parent().parent().parent().parent().attr('data-id')
-//     console.log(playlistID)
-//     const playlistNameTarget = $(this).parent().parent().parent().siblings()[0]
-//     const playlistName = $(playlistNameTarget).text()
-//     console.log(playlistName)
-//     const trackID = $(this).parent().parent().attr('data-id')
-//     console.log(trackID)
-//     const trackIDs = data.playlist.tracks
-//     console.log(trackIDs)
-//     const removeIndex = trackIDs.map(function (trackID) {
-//       return item.id
-//     })
-//       .indexOf("abc");
-//
-//     ~removeIndex && array.splice(removeIndex, 1);
-}
+  $('.edit-current-playlist').on('click', function (event) {
+    event.preventDefault()
+    $('.remove-current-track').removeClass('hidden')
+    $('.edit-current-playlist').addClass('hidden')
+    // const id = $(this).parent().parent().data('id')
+  })
+  $('.remove-current-track').on('click', function (event) {
+    event.preventDefault()
+    const playlistID = $(this).parent().parent().parent().parent().attr('data-id')
+    console.log(playlistID)
+    const playlistNameTarget = $(this).parent().parent().parent().siblings()[0]
+    const playlistName = $(playlistNameTarget).text()
+    console.log(playlistName)
+    const trackID = $(this).parent().parent().attr('data-id')
+    console.log(trackID)
+    const trackIDs = data.playlist.tracks
+    console.log(trackIDs)
+    const newIDs = trackIDs.filter(function (obj) {
+      return trackID.indexOf(obj.id) === -1
+    })
+    console.log(newIDs)
+    const justIDs = []
+    for (let i = 0; i < newIDs.length; i++) {
+      justIDs.push(newIDs[i].id)
+    }
 
-// const patchPlaylist = () => {
-//
-// }
+  })
+}
 
 const currentPlaylistError = () => {
   $('#message').html('<p>Something went wrong getting playlist... try again?<p>')
