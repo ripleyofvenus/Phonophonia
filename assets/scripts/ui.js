@@ -162,7 +162,7 @@ const onSaveTrack = (trackID, trackTitle, trackArtist, trackURL) => {
   console.log(trackID)
   const id = trackID
   const newTitle = $(trackTitle).text()
-  const newArtist = $(trackTitle).text()
+  const newArtist = $(trackArtist).text()
   const newURL = $(trackURL).text()
   const data =
 {
@@ -256,24 +256,43 @@ const currentPlaylistSuccess = (data) => {
   $('.remove-current-track').on('click', function (event) {
     event.preventDefault()
     const playlistID = $(this).parent().parent().parent().parent().attr('data-id')
-    console.log(playlistID)
+    // console.log(playlistID)
     const playlistNameTarget = $(this).parent().parent().parent().siblings()[0]
     const playlistName = $(playlistNameTarget).text()
     console.log(playlistName)
     const trackID = $(this).parent().parent().attr('data-id')
-    console.log(trackID)
+    // console.log(trackID)
     const trackIDs = data.playlist.tracks
-    console.log(trackIDs)
+    // console.log(trackIDs)
     const newIDs = trackIDs.filter(function (obj) {
       return trackID.indexOf(obj.id) === -1
     })
-    console.log(newIDs)
+    // console.log(newIDs)
     const justIDs = []
     for (let i = 0; i < newIDs.length; i++) {
       justIDs.push(newIDs[i].id)
     }
-
+    updateCurrentPlaylist(playlistID, playlistName, justIDs)
+    // .then(console.log('yeahhh'))
+    // .catch(console.log('boooo'))
   })
+}
+
+const updateCurrentPlaylist = (playlistID, playlistName, justIDs) => {
+  console.log(playlistID)
+  const id = playlistID
+  const newTrackIDs = justIDs
+
+  const data =
+{
+  playlist: {
+    name: playlistName,
+    track_ids: newTrackIDs
+  }
+}
+  playlistsAPI.editPlaylist(data, id)
+    .then(updatePlaylistSuccess)
+    . catch(updatePlaylistFailure)
 }
 
 const currentPlaylistError = () => {

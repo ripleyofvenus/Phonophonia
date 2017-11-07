@@ -57,10 +57,12 @@ const deletePlaylist = function (id) {
   })
 }
 
-const editPlaylist = function (selectPlaylistId, data) {
+const editPlaylist = function (data, id) {
+  console.log(id)
+  console.log(data)
   const token = store.userData.token
   return $.ajax({
-    url: config.apiOrigin + '/playlists/' + selectPlaylistId,
+    url: config.apiOrigin + '/playlists/' + id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + token
