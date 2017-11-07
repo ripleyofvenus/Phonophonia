@@ -149,14 +149,7 @@ const getTracksSuccess = (data) => {
       .then(populatePlaylistList)
       .catch(populatePlaylistError)
   })
-  // $('#message').show()
-  // $('#message').removeClass('hidden')
-  // $('#message').delay(2000).fadeOut('2000')
 }
-
-// const editTrackDetails = (event) => {
-//
-// }
 
 const onSaveTrack = (trackID, trackTitle, trackArtist, trackURL) => {
   console.log(trackID)
@@ -251,30 +244,23 @@ const currentPlaylistSuccess = (data) => {
     event.preventDefault()
     $('.remove-current-track').removeClass('hidden')
     $('.edit-current-playlist').addClass('hidden')
-    // const id = $(this).parent().parent().data('id')
   })
   $('.remove-current-track').on('click', function (event) {
     event.preventDefault()
     const playlistID = $(this).parent().parent().parent().parent().attr('data-id')
-    // console.log(playlistID)
     const playlistNameTarget = $(this).parent().parent().parent().siblings()[0]
     const playlistName = $(playlistNameTarget).text()
     console.log(playlistName)
     const trackID = $(this).parent().parent().attr('data-id')
-    // console.log(trackID)
     const trackIDs = data.playlist.tracks
-    // console.log(trackIDs)
     const newIDs = trackIDs.filter(function (obj) {
       return trackID.indexOf(obj.id) === -1
     })
-    // console.log(newIDs)
     const justIDs = []
     for (let i = 0; i < newIDs.length; i++) {
       justIDs.push(newIDs[i].id)
     }
     updateCurrentPlaylist(playlistID, playlistName, justIDs)
-    // .then(console.log('yeahhh'))
-    // .catch(console.log('boooo'))
   })
 }
 
