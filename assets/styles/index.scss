@@ -8,26 +8,26 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 .contents {
   // background: yellow;
-  position: relative;
+  // position: relative;
   height: 75%;
   width: 800px;
 }
 
 .current-playlist-container {
-  // background: red;
-  width: 70%;
+  background: red;
+  width: 500px;
   height: 100%;
   float: right;
 }
 
 .current-playlist-title {
-  // background: blue;
+  background: blue;
   height: 5%;
   width: 70%;
 }
 
 .current-playlist {
-  // background: green;
+  background: pink;
   width: 70%;
   height: 95%;
 }
@@ -55,6 +55,87 @@ ul {
   list-style-type: none;
 }
 
+p {
+  margin: auto;
+  float: left;
+}
+
 .hidden {
   display: none;
+}
+
+.large-spacer {
+  background-color: green;
+  width: 35%;
+  height: 50px;
+  float: left;
+}
+
+.medium-spacer {
+  background-color: yellow;
+  width: 26%;
+  height: 50px;
+  position: relative;
+  // float: left;
+}
+
+.small-spacer {
+  background-color: orange;
+  width: 23%;
+  height: 20px;
+  // float: left;
+}
+
+.smallest-spacer {
+  background-color: pink;
+  width: 16%;
+  height: 20px;
+  float: left;
+  position: relative;
+}
+
+.title {
+  width: 29%;
+  float: left;
+  text-align: center;
+  margin: 6px;
+}
+
+.blurb {
+  float: left;
+  width: 100%;
+}
+
+.container-fluid {
+  margin: 0px;
+  padding: 0px;
+}
+
+h2 {
+  text-decoration: underline;
+  text-decoration-style: double;
+}
+
+// .row {
+//   width: 100%;
+// }
+
+.container {
+  display: flex;
+}
+
+.container > div {
+  flex: 1;
+}
+
+.header {
+  width: 100%;
+  margin: 0px;
+}
+
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+  background-image: "https://i.stack.imgur.com/oM0m0.png";
 }
