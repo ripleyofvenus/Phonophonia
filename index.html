@@ -14,10 +14,30 @@
 </head>
 
 <body class="container-fluid">
+  <!-- AUTH FUNCTIONS BUTTONS-->
+  <div class="button-row row">
+  <button type="button" class="btn btn-primary sign-up" id="sign-up-button" data-toggle="modal" data-target="#signup">
+  Sign Up
+  </button>
+  <button type="button" class="btn btn-primary sign-in" id="sign-in-button" data-toggle="modal" data-target="#signin">
+  Sign In
+  </button>
+  <button type="button" class="hidden btn btn-primary change-password" id="change-password-button" data-toggle="modal" data-target="#changepassword">
+  Change Password
+  </button>
+  <div class="hidden sign-out">
+  <form id="sign-out">
+    <fieldset>
+      <input type="submit" name="submit" value="Sign Out">
+    </fieldset>
+  </form>
+</div>
+</div>
+  <!-- END OF AUTH FUNCTION Buttons -->
   <div class="row header">
-    <div class="large-spacer col-lg-3 col-xs-2"></div>
+    <!-- <div class="large-spacer col-lg-3 col-xs-2"></div> -->
     <h1 class="title"><b>🎧 Phonophonia🎧 </b></h1>
-    <div class="large-spacer col-lg-3 col-xs-2"></div>
+    <!-- <div class="large-spacer col-lg-3 col-xs-2"></div> -->
   </div>
     <br>
     <div class="row blurb">
@@ -34,27 +54,11 @@
       <p>"Phonia" adj. denoting a type of plug, and the corresponding socket, used with audio and video equipment.</p>
       <div class="small-spacer col-xs-2"></div>
   </div>
-<div class="message" id='message'></div>
-  <!-- AUTH FUNCTIONS BUTTONS-->
-  <button type="button" class="btn btn-primary sign-up" id="sign-up-button" data-toggle="modal" data-target="#signup">
-  Sign Up
-  </button>
-  <button type="button" class="btn btn-primary sign-in" id="sign-in-button" data-toggle="modal" data-target="#signin">
-  Sign In
-  </button>
-  <button type="button" class="hidden btn btn-primary change-password" id="change-password-button" data-toggle="modal" data-target="#changepassword">
-  Change Password
-  </button>
-  <div class="hidden sign-out">
-  <form id="sign-out">
-    <fieldset>
-      <h3>Sign Out</h3>
-      <input type="submit" name="submit" value="Sign Out">
-    </fieldset>
-  </form>
+<div class="message-block container">
+  <!-- <div class="small-spacer col-xs-2"></div> -->
+    <div class="message" id='message'></div>
 </div>
-  <!-- END OF AUTH FUNCTION Buttons -->
-
+<br>
   <!-- Contents -->
 <div class='container'>
   <div class='row'>
