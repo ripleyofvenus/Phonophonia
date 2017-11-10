@@ -31,8 +31,18 @@
       <input type="submit" name="submit" value="Sign Out">
     </fieldset>
   </form>
+  </div>
 </div>
-</div>
+      <!-- New Sound Form -->
+    <div class="sound-row row">
+      <button type="button" class="hidden btn btn-primary new-sound" id="new-sound-button" data-toggle="modal" data-target="#newsound">
+      Add Sound
+      </button>
+      <button type="button" class="hidden btn btn-primary new-playlist" id="new-playlist-button" data-toggle="modal" data-target="#newplaylist">
+      New Playlist
+      </button>
+    </div>
+<br>
   <!-- END OF AUTH FUNCTION Buttons -->
   <div class="row header">
     <!-- <div class="large-spacer col-lg-3 col-xs-2"></div> -->
@@ -60,12 +70,12 @@
 </div>
 <br>
   <!-- Contents -->
-<div class='container'>
+<!-- <div class='container'> -->
   <div class='row'>
-    <div class="spacer col-lg-3 col-md-6"></div>
+    <!-- <div class="largest-spacer col-xs-2"></div> -->
     <div class='contents hidden'>
+      <div class='current-playlist-container'>
       <div class="col-lg-3 col-md-6 text-center">
-        <div class='current-playlist-container'>
           <div class='current-playlist-title'>
           <h2>Current Playlist</h2>
           </div>
@@ -73,7 +83,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-md-6 text-center">
+      <!-- <div class="col-lg-3 col-md-6 text-center">
         <div class='playlists-container'>
           <div class='playlists-title'>
             <h2>Playlists</h2>
@@ -91,24 +101,17 @@
           <div class='tracks-list'>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
+    <!-- <div class="largest-spacer col-xs-2"></div> -->
   </div>
-</div>
+<!-- </div> -->
   <!-- Footer Wrap -->
   <div id="footerwrap">
-    <div class="container">
+    <div class="footer container">
 
-      <!-- New Sound Form -->
-
-      <button type="button" class="hidden btn btn-primary new-sound" id="new-sound-button" data-toggle="modal" data-target="#newsound">
-      Add Sound
-      </button>
-      <button type="button" class="hidden btn btn-primary new-playlist" id="new-playlist-button" data-toggle="modal" data-target="#newplaylist">
-      New Playlist
-      </button>
       <!-- Say goodnight Gracie -->
-      <div class="col-lg-12">
+      <div class="signature col-lg-12">
         <b>Created by Madelaine Ripley</b>
       </div>
     </div>
