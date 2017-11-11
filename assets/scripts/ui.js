@@ -10,7 +10,7 @@ const playlistsAPI = require('./playlist/api')
 // Auth Ui
 
 const signUpSuccess = (data) => {
-  $('#message').html('<p>sign up success<p>')
+  $('#message').html('<p>Welcome...<p>')
   $('#message').show()
   $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
@@ -39,6 +39,8 @@ const signInSuccess = (data) => {
   $('.change-password').removeClass('hidden')
   $('.sign-out').removeClass('hidden')
   $('.contents').removeClass('hidden')
+  $('.tracks-container').removeClass('hidden')
+  $('.playlists-container').removeClass('hidden')
   $('.new-sound').removeClass('hidden')
   $('.new-playlist').removeClass('hidden')
   getTracks()
@@ -59,7 +61,9 @@ const signOutSuccess = (data) => {
   $('#message').show()
   $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
-  $('.contents').addClass('hidden')
+  $('.contents').removeClass('hidden')
+  $('.tracks-container').removeClass('hidden')
+  $('.playlists-container').removeClass('hidden')
   $('.change-password').addClass('hidden')
   $('.sign-out').addClass('hidden')
   $('.sign-up').removeClass('hidden')

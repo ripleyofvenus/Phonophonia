@@ -20,9 +20,10 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   align-content: center;
   position: relative;
   background: red;
-  width: 70%;
+  width: 65%;
   height: 100%;
   float: left;
+  margin: 20px 0 0 20px;
 }
 
 .current-playlist-title {
@@ -39,10 +40,13 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 .tracks-container, .playlists-container {
   background: red;
-  width: 500px;
-  height: 50%;
+  width: 24%;
+  height: 200px;
   float: right;
-  position: relative;
+  position: static;
+  display: block;
+  margin: 20px;
+  overflow: scroll;
   // overflow: auto;
 }
 
@@ -113,6 +117,7 @@ p {
   position: absolute;
   text-align: center;
   margin: 6px;
+  // background-color: grey;
 }
 
 .blurb {
@@ -120,7 +125,7 @@ p {
   width: 100%;
   border: 5px;
   text-align: center;
-  // text-indent: 10px;
+  background-color: grey;
 }
 
 .container-fluid {
@@ -153,11 +158,13 @@ h2 {
   margin: 0px;
 }
 
-html,
+// html,
 body {
-  margin: 0px;
-  padding: 0px;
-  background-image: url('http://www.designbolts.com/wp-content/uploads/2012/12/Noisy-Grid-Seamless-Pattern-For-Website-Background.jpg');
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-image: url('https://media.giphy.com/media/ZgZIkO614AKEo/giphy.gif');
+  background-size: cover;
 }
 
 .message {
@@ -167,12 +174,9 @@ body {
   display: block;
   display: table;
   margin: 0 auto;
-  background-color: blue;
 }
 
 .message-block {
-  // text-align: center;
-  background-color: green;
   display: block;
   width: 100%;
   height: 50px;
@@ -213,5 +217,9 @@ body {
 
 .signature {
   position: relative;
+  float: right;
+}
+
+#right-div {
   float: right;
 }
