@@ -6,13 +6,19 @@
         <li><h2 class="track-title">{{this.title}}</h2></li>
         <li><p class="track-meta">{{this.artist}}</p></li>
         <li><p>{{this.host_url}}</p></li>
-        <li><button class="btn btn-info btn-sm delete-track">Delete Track</button></li>
-        <li><button class= "save-changes hidden btn btn-info btn-sm">Save Changes</button></li>
         <li><button class= "add-to-playlist btn btn-info btn-sm">Add to Playlist</button></li>
         <li><select class="selectPlaylist hidden" name="selectPlaylist"></select></li>
         <li><button class= "confirm-to-playlist hidden btn btn-info btn-sm">Confirm</button></li>
-        <li><button class= "cancel-to-playlist hidden btn btn-info btn-sm">Cancel</button></li>
-        <li><button class= "edit-track btn btn-info btn-sm">Edit Track</button></li>
+        <li class="track editable">
+        {{#if track.editable }}
+          <ul>
+            <li><button class="btn btn-info btn-sm delete-track">Delete Track</button></li>
+            <li><button class= "save-changes hidden btn btn-info btn-sm">Save Changes</button></li>
+            <li><button class= "cancel-to-playlist hidden btn btn-info btn-sm">Cancel</button></li>
+            <li><button class= "edit-track btn btn-info btn-sm">Edit Track</button></li>
+          </ul>
+        </li>
+        {{/if}}
       </ul>
       </div>
     {{/each}}
