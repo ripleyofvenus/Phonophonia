@@ -164,7 +164,11 @@ body {
   margin: 0;
   padding: 0;
   border: none;
-  background-image: linear-gradient(to right, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0)), url('https://media.giphy.com/media/ZgZIkO614AKEo/giphy.gif');
+  // background-image: linear-gradient(to right, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0)), url('https://media.giphy.com/media/ZgZIkO614AKEo/giphy.gif');
+  background: linear-gradient(to right, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0)), linear-gradient(to right, rgba(255, 255, 255, 0), rgba(134, 241, 164, 1)), url('https://media.giphy.com/media/ZgZIkO614AKEo/giphy.gif') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
 }
 
