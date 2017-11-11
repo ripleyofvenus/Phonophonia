@@ -61,9 +61,9 @@ const signOutSuccess = (data) => {
   $('#message').show()
   $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
-  $('.contents').removeClass('hidden')
-  $('.tracks-container').removeClass('hidden')
-  $('.playlists-container').removeClass('hidden')
+  $('.contents').addClass('hidden')
+  $('.tracks-container').addClass('hidden')
+  $('.playlists-container').addClass('hidden')
   $('.change-password').addClass('hidden')
   $('.sign-out').addClass('hidden')
   $('.sign-up').removeClass('hidden')
@@ -105,8 +105,18 @@ const getPlaylists = () => {
 
 const getTracksSuccess = (data) => {
   $('.tracks-list').empty()
-  const showTracksHtml = showTracksTemplate({ tracks: data.tracks })
-  $('.tracks-list').append(showTracksHtml)
+  const userTracks = data.tracks.filter(track => track.user_id === store.userData.id)
+  const nonUserTracks = data.tracks.filter(track => track.user_id !== store.userData.id)
+  if (userTracks === 0) {
+    $('#message').text('You have no tracks, let us hear some! Select new sound.')
+  } else {
+    $('#message').text('Ooh, sounds good to me...')
+    $(userTracks).css('background-color', 'rgba(65, 255, 65, 0.7)')
+  }
+  const showUserTracksHtml = showTracksTemplate({ tracks: userTracks })
+  $('.tracks-list').append(showUserTracksHtml)
+  // const showNonUserTracksHtml = showTracksTemplate({ tracks: nonUserTracks })
+  // $('.tracks-list').append(showNonUserTracksHtml)
   $('.delete-track').on('click', function (event) {
     event.preventDefault()
     const id = $(this).parent().parent().attr('data-id')
