@@ -110,16 +110,17 @@ const getTracksSuccess = (data) => {
   if (userTracks === 0) {
     $('#message').text('You have no tracks, let us hear some! Select new sound.')
   } else {
-    $('#message').text('Ooh, sounds good to me...')
+    $('#message').text('Make some new sounds, share them with the world!')
     $(userTracks).css('background-color', 'rgba(65, 255, 65, 0.7)')
   }
   const showUserTracksHtml = showTracksTemplate({ tracks: userTracks })
   $('.tracks-list').append(showUserTracksHtml)
-  // const showNonUserTracksHtml = showTracksTemplate({ tracks: nonUserTracks })
-  // $('.tracks-list').append(showNonUserTracksHtml)
+  const showNonUserTracksHtml = showTracksTemplate({ tracks: nonUserTracks })
+  $('.tracks-list').append(showNonUserTracksHtml)
   $('.delete-track').on('click', function (event) {
     event.preventDefault()
-    const id = $(this).parent().parent().attr('data-id')
+    const id = $(this).parent().parent().parent().parent().attr('data-id')
+    console.log(id)
     tracksAPI.deleteTrack(id)
       .then(deleteTrackSuccess)
       .catch(deleteTrackFailure)
