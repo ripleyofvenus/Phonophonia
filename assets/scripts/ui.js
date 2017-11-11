@@ -129,12 +129,12 @@ const getTracksSuccess = (data) => {
     event.preventDefault()
     $('.save-changes').removeClass('hidden')
     $('.cancel-to-playlist').removeClass('hidden')
-    const trackID = $(this).parent().parent().attr('data-id')
-    const trackTitle = $(this).parent().siblings()[0]
+    const trackID = $(this).parent().parent().parent().parent().attr('data-id')
+    const trackTitle = $(this).parent().parent().parent().siblings()[0]
     trackTitle.contentEditable = true
-    const trackArtist = $(this).parent().siblings()[1]
+    const trackArtist = $(this).parent().parent().parent().siblings()[1]
     trackArtist.contentEditable = true
-    const trackURL = $(this).parent().siblings()[2]
+    const trackURL = $(this).parent().parent().parent().siblings()[2]
     trackURL.contentEditable = true
     $(trackTitle).css('background-color', 'rgba(39, 43, 43, 0.7)')
     $(trackArtist).css('background-color', 'rgba(39,43,43, 0.7)')
@@ -146,11 +146,11 @@ const getTracksSuccess = (data) => {
   })
   $('.cancel-to-playlist').on('click', function (event) {
     event.preventDefault()
-    const trackTitle = $(this).parent().siblings()[0]
-    trackTitle.contentEditable = false
-    const trackArtist = $(this).parent().siblings()[1]
-    trackArtist.contentEditable = false
-    const trackURL = $(this).parent().siblings()[2]
+    const trackTitle = $(this).parent().parent().parent().siblings()[0]
+    trackTitle.contentEditable = true
+    const trackArtist = $(this).parent().parent().parent().siblings()[1]
+    trackArtist.contentEditable = true
+    const trackURL = $(this).parent().parent().parent().siblings()[2]
     trackURL.contentEditable = false
     $(trackTitle).css('background-color', 'initial')
     $(trackArtist).css('background-color', 'initial')
@@ -164,9 +164,10 @@ const getTracksSuccess = (data) => {
   })
   $('.add-to-playlist').on('click', function (event) {
     event.preventDefault()
-    const thisTrackDropdown = $(this).parent().siblings()[5]
-    const thisTrackSave = $(this).parent().siblings()[6]
-    const thisTrackCancel = $(this).parent().siblings()[7]
+    const thisTrackDropdown = $(this).parent().siblings()[3]
+    console.log(thisTrackDropdown)
+    const thisTrackSave = $(this).parent().children().children().siblings()[1]
+    const thisTrackCancel = $(this).parent().siblings()[2]
     $(thisTrackDropdown).children().removeClass('hidden')
     $(thisTrackSave).children().removeClass('hidden')
     $(thisTrackCancel).children().removeClass('hidden')
