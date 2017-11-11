@@ -163,7 +163,7 @@ body {
   margin: 0;
   padding: 0;
   border: none;
-  background-image: url('https://media.giphy.com/media/ZgZIkO614AKEo/giphy.gif');
+  background-image: linear-gradient(to right, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0)), url('https://media.giphy.com/media/ZgZIkO614AKEo/giphy.gif');
   background-size: cover;
 }
 
