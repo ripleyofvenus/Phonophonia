@@ -135,6 +135,15 @@ const getTracksSuccess = (data) => {
   })
   $('.cancel-to-playlist').on('click', function (event) {
     event.preventDefault()
+    const trackTitle = $(this).parent().siblings()[0]
+    trackTitle.contentEditable = false
+    const trackArtist = $(this).parent().siblings()[1]
+    trackArtist.contentEditable = false
+    const trackURL = $(this).parent().siblings()[2]
+    trackURL.contentEditable = false
+    $(trackTitle).css('background-color', 'initial')
+    $(trackArtist).css('background-color', 'initial')
+    $(trackURL).css('background-color', 'initial')
     $('.confirm-to-playlist').addClass('hidden')
     $('.selectPlaylist').addClass('hidden')
     $('.add-to-playlist').removeClass('hidden')
