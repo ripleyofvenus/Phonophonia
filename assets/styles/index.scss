@@ -53,13 +53,13 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 .tracks-title, .playlists-title {
   // background: blue;
   height: 5%;
-  width: 30%;
+  width: 100%;
 }
 
 .playlists-list, .tracks-list {
   background: green;
   height: 50%;
-  width: 30%;
+  width: 100%;
 }
 
 ul {
@@ -117,6 +117,7 @@ p {
   position: absolute;
   text-align: center;
   margin: 6px;
+  // background: linear-gradient(to left, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0));
   // background-color: grey;
 }
 
