@@ -12,16 +12,15 @@
         <li><button class= "add-to-playlist btn btn-info btn-sm">Add to Playlist</button></li>
         <li><select class="selectPlaylist hidden" name="selectPlaylist"></select></li>
         <li><button class= "confirm-to-playlist hidden btn btn-info btn-sm">Confirm</button></li>
-        <li class="track editable">
-        {{#if track.editable }}
+        <li><button class= "save-changes hidden btn btn-info btn-sm">Save Changes</button></li>
+        <li><button class= "cancel-to-playlist hidden btn btn-info btn-sm">Cancel</button></li>
+        <li class="track editable">{{#if track.editable }}
           <ul>
             <li><button class="btn btn-info btn-sm delete-track">Delete Track</button></li>
-            <li><button class= "save-changes hidden btn btn-info btn-sm">Save Changes</button></li>
-            <li><button class= "cancel-to-playlist hidden btn btn-info btn-sm">Cancel</button></li>
             <li><button class= "edit-track btn btn-info btn-sm">Edit Track</button></li>
           </ul>
-        </li>
         {{/if}}
+        </li>
       </ul>
       </div>
     {{/each}}
