@@ -4,10 +4,14 @@
       <ul data-id="{{playlist.id}}">
         <li><h2 class="playlist-name">{{this.name}}</h2></li>
         <li><button class= "select-playlist btn btn-info btn-sm">Select Playlist</button></li>
-        <li><button class="delete-playlist btn btn-info btn-sm">Delete Playlist</button></li>
-        <li><button class= "save-changes-playlist hidden btn btn-info btn-sm">Save Changes</button></li>
+        <li class="playlist editable">{{#if playlist.editable }}
+          <ul>
+            <li><button class="delete-playlist btn btn-info btn-sm">Delete Playlist</button></li>
+            <li><button class= "confirm-changes-playlist hidden btn btn-info btn-sm">Confirm</button></li>
+          </ul>
+        {{/if}}</li>
       </ul>
-      </div>
+      <!-- </div> -->
     {{/each}}
   <!-- </div>
 </div> -->
