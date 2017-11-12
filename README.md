@@ -42,13 +42,15 @@ I'm eager to continue work on this project, and in future I intend to...
 # User Stories
 
 As a user...
-I want to be able to select tracks for my profile
-I want to create playlists
-I want to add tracks to my playlist
-I want to remove tracks from my playlist without deleting the tracks from my
+- I want to be able to select tracks for my profile
+- I want to create playlists
+- I want to add tracks to my playlist
+- I want to remove tracks from my playlist without deleting the tracks from my
 collection of tracks
-I want to delete tracks and have them removed from my playlists
+- I want to delete tracks and have them removed from my playlists
 
 ## Obligatory cute photo
 Thank you for making it to the end!
-![Obligatory Cute Photo](http://blog.showmenaturephotography.com/wp-content/uploads/B7D-5143-YBMarmotStretching.jpg)
+
+![Obligatory Cute Photo]
+(http://blog.showmenaturephotography.com/wp-content/uploads/B7D-5143-YBMarmotStretching.jpg)
