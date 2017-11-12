@@ -1,12 +1,12 @@
 # Phonophonia
 
-This application is a Ruby on Rails API for storing tracks and playlists for
+This application is a single page appliction for storing tracks and playlists for
 users.  Users can create, update, and delete tracks, as well as create and delete playlists.
 Users can also view tracks and playlists belonging to other users, as well as incorporate
 other user's tracks into their own playlists.
 
 # Wireframe
-![Wireframe](https://imgur.com/a/deH3I)
+![Wireframe](https://i.imgur.com/OZfET6B.jpg)
 
 [Click Here for demo](https://ripleyofvenus.github.io/Phonophonia/)
 
