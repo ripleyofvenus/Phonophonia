@@ -58,9 +58,9 @@ const signInFailure = () => {
 
 const signOutSuccess = (data) => {
   store.userData = null
+  $('.current-playlist').empty()
   $('#message').html('<p>Signed Out<p>')
   $('#message').show()
-// $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
   $('.contents').addClass('hidden')
   $('.tracks-container').addClass('hidden')
@@ -125,7 +125,6 @@ const getTracksSuccess = (data) => {
   $('.delete-track').on('click', function (event) {
     event.preventDefault()
     const id = $(this).parent().parent().parent().parent().attr('data-id')
-    console.log(id)
     tracksAPI.deleteTrack(id)
       .then(deleteTrackSuccess)
       .catch(deleteTrackFailure)
@@ -146,9 +145,9 @@ const getTracksSuccess = (data) => {
     trackArtist.contentEditable = true
     const trackURL = $(this).parent().parent().parent().siblings()[4]
     trackURL.contentEditable = true
-    $(trackTitle).css('background-color', 'rgba(255, 255, 255, 0.7)')
-    $(trackArtist).css('background-color', 'rgba(255, 255, 255, 0.7)')
-    $(trackURL).css('background-color', 'rgba(255, 255, 255, 0.7)')
+    $(trackTitle).css('background-color', 'rgba(116,238,168,0.5)')
+    $(trackArtist).css('background-color', 'rgba(116,238,168,0.5)')
+    $(trackURL).css('background-color', 'rgba(116,238,168,0.5)')
     $('.save-changes').on('click', function () {
       onSaveTrack(trackID, trackTitle, trackArtist, trackURL)
     })
@@ -178,6 +177,8 @@ const getTracksSuccess = (data) => {
     $('.delete-track').removeClass('hidden')
     $('.edit-track').removeClass('hidden')
     $('.selectPlaylist').empty()
+    $('.tracks-list').empty()
+    getTracks()
   })
   $('.add-to-playlist').on('click', function (event) {
     event.preventDefault()
@@ -295,7 +296,6 @@ const newPlaylistError = () => {
 }
 
 const currentPlaylistSuccess = (data) => {
-  // console.log(data)
   $('.current-playlist').empty()
   const showCurrentHtml = showCurrentTemplate({ playlist: data.playlist })
   $('.current-playlist').append(showCurrentHtml)
@@ -327,6 +327,8 @@ const currentPlaylistSuccess = (data) => {
     updateCurrentPlaylist(playlistID, playlistName, justIDs)
   })
 }
+
+// Still in progress. Error during patch request where the justIDs array is empty
 
 const updateCurrentPlaylist = (playlistID, playlistName, justIDs) => {
   const id = playlistID
@@ -366,8 +368,6 @@ const populatePlaylistList = (data) => {
 
 // ISSUE HERE WITH SHOWING THE CURRENT PLAYLIST AS PREVIEW
 const selectedPlaylist = (userPlaylists, value) => {
-  // console.log(userPlaylists)
-  // console.log(value)
   $('.current-playlist').empty()
 //   const pickPlaylist =
 //   { playlist: {
@@ -461,7 +461,6 @@ const updatePlaylistFailure = () => {
 }
 
 const updateTrackSuccess = () => {
-  console.log('made it')
   $('#message').text('Updated!')
   $('#message').show()
   $('#message').delay(2000).fadeOut('2000')
@@ -474,7 +473,7 @@ const updateTrackSuccess = () => {
 }
 
 const updateTrackError = () => {
-  $('#message').html('<p>Something went wrong updating your track... try again?<p>')
+  $('#message').html('<p>Something went wrong updating your track... make sure all fields have entries<p>')
   $('#message').show()
   $('#message').delay(2000).fadeOut('2000')
 }

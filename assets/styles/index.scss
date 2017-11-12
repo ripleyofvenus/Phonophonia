@@ -10,7 +10,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 }
 
 .contents {
-  // background: yellow;
+  background: rgba(38,151,226,0.5);
   // position: relative;
   height: 75%;
   width: 800px;
@@ -19,7 +19,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 .current-playlist-container {
   align-content: center;
   position: relative;
-  background: red;
+  background: rgba(38,151,226,0.5);
   width: 65%;
   height: 100%;
   float: left;
@@ -27,19 +27,19 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 }
 
 .current-playlist-title {
-  background: blue;
+  background: rgba(116,238,168,0.5);
   height: 100%;
   width: 100%;
 }
 
 .current-playlist {
-  background: pink;
+  background: rgba(38,151,226,0.5);
   width: 100%;
   height: 95%;
 }
 
 .tracks-container, .playlists-container {
-  background: red;
+  background: rgba(38,151,226,0.5);
   width: 24%;
   height: 200px;
   float: right;
@@ -51,24 +51,38 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 }
 
 .tracks-title, .playlists-title {
-  // background: blue;
+  background: rgba(116,238,168,0.5);
   height: 5%;
   width: 100%;
 }
 
 .playlists-list, .tracks-list {
-  // background: green;
+  background: rgba(38,151,226,0.5);
   height: 50%;
   width: 100%;
 }
 
+.playlist-name, .current-playlist-name, .track-title {
+  background: rgba(116,238,168,0.5);
+  width: 100%;
+}
 ul {
   list-style-type: none;
 }
 
 p {
+  color: white;
   margin: auto;
   float: left;
+}
+
+h4, h1, .current-playlist-tracks, .signature {
+  color: white;
+}
+
+.text {
+  // background: rgba(116,238,168,0.5);
+  // width: 25%;
 }
 
 .hidden {
@@ -135,6 +149,7 @@ p {
 }
 
 h2 {
+  color: white;
   text-decoration: underline;
   text-decoration-style: double;
 }
@@ -163,7 +178,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(to right, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0)), linear-gradient(to right, rgba(255, 255, 255, 0), rgba(134, 241, 164, 1)), url('https://media.giphy.com/media/ZgZIkO614AKEo/giphy.gif') no-repeat center center fixed;
+  background: linear-gradient(to left, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0)), linear-gradient(to right, rgba(255, 255, 255, 0), rgba(134, 241, 164, 1)), url('https://media.giphy.com/media/ZgZIkO614AKEo/giphy.gif') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
