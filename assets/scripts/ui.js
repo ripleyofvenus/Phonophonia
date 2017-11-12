@@ -132,8 +132,10 @@ const getTracksSuccess = (data) => {
   })
   $('.edit-track').on('click', function (event) {
     event.preventDefault()
-    const thisTrackSave = $(this).parent().siblings()[1]
-    const thisTrackCancel = $(this).parent().siblings()[2]
+    const thisTrackSave = $(this).parent().parent().parent().siblings()[9]
+    // console.log(thisTrackSave)
+    const thisTrackCancel = $(this).parent().parent().parent().siblings()[10]
+    // console.log(thisTrackCancel)
     // const thisTrackEdit = $(this).parent().siblings()[3]
     // const thisTrackAdd = $(this).parent().parent().parent().siblings()[6]
     // const thisTrackSelect = $(this).parent().parent().parent().siblings()[7]
@@ -165,15 +167,18 @@ const getTracksSuccess = (data) => {
   })
   $('.cancel-to-playlist').on('click', function (event) {
     event.preventDefault()
-    const trackTitle = $(this).parent().parent().parent().siblings()[0]
+    const trackTitle = $(this).parent().siblings()[0]
     trackTitle.contentEditable = false
-    const trackArtist = $(this).parent().parent().parent().siblings()[2]
+    const trackArtist = $(this).parent().siblings()[2]
     trackArtist.contentEditable = false
-    const trackURL = $(this).parent().parent().parent().siblings()[4]
+    const trackURL = $(this).parent().siblings()[4]
     trackURL.contentEditable = false
     $(trackTitle).css('background-color', 'initial')
     $(trackArtist).css('background-color', 'initial')
     $(trackURL).css('background-color', 'initial')
+    $('#message').html('Can&#39t fix whats perfect already')
+    $('#message').show()
+    $('#message').delay(2000).fadeOut('2000')
     $('.confirm-to-playlist').addClass('hidden')
     $('.selectPlaylist').addClass('hidden')
     $('.cancel-to-playlist').addClass('hidden')
@@ -185,16 +190,18 @@ const getTracksSuccess = (data) => {
   })
   $('.add-to-playlist').on('click', function (event) {
     event.preventDefault()
-    const thisTrackDropdown = $(this).parent().siblings()[3]
-    console.log(thisTrackDropdown)
-    const thisTrackSave = $(this).parent().children().children().siblings()[1]
-    console.log(thisTrackSave)
-    const thisTrackCancel = $(this).parent().siblings()[2]
-    console.log(thisTrackCancel)
+    const thisTrackDropdown = $(this).parent().siblings()[6]
+    // console.log(thisTrackDropdown)
+    // const thisTrackSave = $(this).parent().siblings()[8]
+    // console.log(thisTrackSave)
+    const thisTrackCancel = $(this).parent().siblings()[9]
+    // console.log(thisTrackCancel)
     $(thisTrackDropdown).children().removeClass('hidden')
-    $(thisTrackSave).children().removeClass('hidden')
+    // $(thisTrackSave).children().removeClass('hidden')
     $(thisTrackCancel).children().removeClass('hidden')
     $('.add-to-playlist').addClass('hidden')
+    $('.delete-track').addClass('hidden')
+    $('.edit-track').addClass('hidden')
     playlistsAPI.getPlaylists()
       .then(populatePlaylistList)
       .catch(populatePlaylistError)
@@ -342,6 +349,7 @@ const populatePlaylistList = (data) => {
     $('.selectPlaylist').append($('<option></option>').val(value.id).html(value.name))
   })
   $('.selectPlaylist').on('change', function () {
+    $('.confirm-to-playlist').removeClass('hidden')
     const value = $(this).val()
     selectedPlaylist(userPlaylists, value)
   })
