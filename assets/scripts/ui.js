@@ -244,7 +244,7 @@ const getPlaylistsSuccess = (data) => {
   })
   $('.edit-playlist').on('click', function (event) {
     event.preventDefault()
-    $('.save-changes-playlist').removeClass('hidden')
+    $('.confirm-changes-playlist').removeClass('hidden')
     const playlistID = $(this).parent().parent().attr('data-id')
     const playlistName = $(this).parent().siblings()[0]
     playlistName.contentEditable = true
@@ -258,10 +258,18 @@ const getPlaylistsSuccess = (data) => {
   })
   $('.delete-playlist').on('click', function (event) {
     event.preventDefault()
-    const id = $(this).parent().parent().attr('data-id')
-    playlistsAPI.deletePlaylist(id)
-      .then(deletePlaylistSuccess)
-      .catch(deletePlaylistFailure)
+    const id = $(this).parent().parent().parent().parent().attr('data-id')
+    $('.confirm-changes-playlist').removeClass('hidden')
+    $('.delete-playlist').addClass('hidden')
+    $('.confirm-changes-playlist').on('click', function (event) {
+      event.preventDefault()
+      // $('#message').text('Make some new sounds, share them with the world!')
+      // $('#message').show()
+      // $('#message').delay(2000).fadeOut('2000'))
+      playlistsAPI.deletePlaylist(id)
+        .then(deletePlaylistSuccess)
+        .catch(deletePlaylistFailure)
+    })
   })
 }
 
@@ -413,6 +421,7 @@ const deleteTrackFailure = () => {
 }
 
 const deletePlaylistSuccess = () => {
+  $('.current-playlist').empty()
   $('#message').html('<p>You will not hear them around here anymore...<p>')
   $('#message').show()
   $('#message').delay(2000).fadeOut('2000')
