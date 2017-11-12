@@ -12,7 +12,7 @@ const playlistsAPI = require('./playlist/api')
 const signUpSuccess = (data) => {
   $('#message').html('<p>Welcome...<p>')
   $('#message').show()
-  $('#message').removeClass('hidden')
+// $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
   $('#sign-up').trigger('reset')
   $('#signup').modal('hide')
@@ -21,7 +21,8 @@ const signUpSuccess = (data) => {
 
 const signUpFailure = () => {
   $('#message').html('<p>Something went wrong... try again?<p>')
-  $('#message').removeClass('hidden')
+// $('#message').removeClass('hidden')
+  $('#message').show()
   $('#message').delay(2000).fadeOut('2000')
   $('#sign-up').trigger('reset')
 }
@@ -30,7 +31,7 @@ const signInSuccess = (data) => {
   store.userData = data.user
   $('#message').html('<p>sign in success<p>')
   $('#message').show()
-  $('#message').removeClass('hidden')
+// $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
   $('#sign-in').trigger('reset')
   $('#signin').modal('hide')
@@ -50,7 +51,7 @@ const signInSuccess = (data) => {
 const signInFailure = () => {
   $('#message').html('<p>Something went wrong... try again?<p>')
   $('#message').show()
-  $('#message').removeClass('hidden')
+// $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
   $('.sign-in').trigger('reset')
 }
@@ -59,7 +60,7 @@ const signOutSuccess = (data) => {
   store.userData = null
   $('#message').html('<p>Signed Out<p>')
   $('#message').show()
-  $('#message').removeClass('hidden')
+// $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
   $('.contents').addClass('hidden')
   $('.tracks-container').addClass('hidden')
@@ -75,7 +76,7 @@ const signOutSuccess = (data) => {
 const changePasswordSuccess = () => {
   $('#message').html('<p>Password Updated<p>')
   $('#message').show()
-  $('#message').removeClass('hidden')
+// $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
   $('#change-password').trigger('reset')
   $('#changepassword').modal('hide')
@@ -84,7 +85,7 @@ const changePasswordSuccess = () => {
 const changePasswordFail = () => {
   $('#message').html('<p>Something went wrong... try again?<p>')
   $('#message').show()
-  $('#message').removeClass('hidden')
+  // $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
   $('#change-password').trigger('reset')
 }
@@ -109,8 +110,12 @@ const getTracksSuccess = (data) => {
   const nonUserTracks = data.tracks.filter(track => track.user_id !== store.userData.id)
   if (userTracks === 0) {
     $('#message').text('You have no tracks, let us hear some! Select new sound.')
+    $('#message').show()
+    $('#message').delay(2000).fadeOut('2000')
   } else {
     $('#message').text('Make some new sounds, share them with the world!')
+    $('#message').show()
+    $('#message').delay(2000).fadeOut('2000')
     $(userTracks).css('background-color', 'rgba(65, 255, 65, 0.7)')
   }
   const showUserTracksHtml = showTracksTemplate({ tracks: userTracks })
@@ -136,7 +141,6 @@ const getTracksSuccess = (data) => {
     $('.edit-track').addClass('hidden')
     $('.add-to-playlist').addClass('hidden')
     $('.delete-track').addClass('hidden')
-    // $('.').addClass('hidden')
     $(thisTrackSave).children().removeClass('hidden')
     $(thisTrackCancel).children().removeClass('hidden')
     const trackID = $(this).parent().parent().parent().parent().attr('data-id')
@@ -156,6 +160,8 @@ const getTracksSuccess = (data) => {
       onSaveTrack(trackID, trackTitle, trackArtist, trackURL)
     })
     $('#message').text('Ch-ch-ch-ch-changes!')
+    $('#message').show()
+    $('#message').delay(2000).fadeOut('2000')
   })
   $('.cancel-to-playlist').on('click', function (event) {
     event.preventDefault()
@@ -215,7 +221,6 @@ const onSaveTrack = (trackID, trackTitle, trackArtist, trackURL) => {
 const getTracksError = () => {
   $('#message').html('<p>Something went wrong... did not retrieve tracks<p>')
   $('#message').show()
-  $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
 }
 
@@ -256,14 +261,12 @@ const getPlaylistsSuccess = (data) => {
 const getPlaylistsError = () => {
   $('#message').html('<p>Something went wrong... did not retrieve tracks<p>')
   $('#message').show()
-  $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
 }
 
 const newPlaylistSuccess = () => {
   $('#message').html('<p>Sounds good to me!<p>')
   $('#message').show()
-  $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
   $('#new-playlist').trigger('reset')
   $('#newplaylist').modal('hide')
@@ -272,7 +275,7 @@ const newPlaylistSuccess = () => {
 
 const newPlaylistError = () => {
   $('#message').html('<p>Something went wrong adding your playlist... try again?<p>')
-  $('#message').removeClass('hidden')
+  $('#message').show()
   $('#message').delay(2000).fadeOut('2000')
 }
 
@@ -327,7 +330,7 @@ const updateCurrentPlaylist = (playlistID, playlistName, justIDs) => {
 
 const currentPlaylistError = () => {
   $('#message').html('<p>Something went wrong getting playlist... try again?<p>')
-  $('#message').removeClass('hidden')
+  $('#message').show()
   $('#message').delay(2000).fadeOut('2000')
 }
 
@@ -369,14 +372,13 @@ const selectedPlaylist = (userPlaylists, value) => {
 
 const populatePlaylistError = () => {
   $('#message').html('<p>Something went wrong getting your playlists... try again?<p>')
-  $('#message').removeClass('hidden')
+  $('#message').show()
   $('#message').delay(2000).fadeOut('2000')
 }
 
 const newSoundSuccess = (data) => {
   $('#message').html('<p>Sounds good to me!<p>')
   $('#message').show()
-  $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
   $('#new-sound').trigger('reset')
   $('#newsound').modal('hide')
@@ -385,41 +387,39 @@ const newSoundSuccess = (data) => {
 
 const newSoundError = () => {
   $('#message').html('<p>Something went wrong adding your track... try again?<p>')
-  $('#message').removeClass('hidden')
+  $('#message').show()
   $('#message').delay(2000).fadeOut('2000')
 }
 
 const deleteTrackSuccess = () => {
-  $('#message').html('<p>You will not hear them here anymore...<p>')
+  $('#message').html('<p>You will not hear them around here anymore...<p>')
   $('#message').show()
-  $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
   getTracks()
 }
 
 const deleteTrackFailure = () => {
   $('#message').html('<p>Something went wrong deleting your track... try again?<p>')
-  $('#message').removeClass('hidden')
+  $('#message').show()
   $('#message').delay(2000).fadeOut('2000')
 }
 
 const deletePlaylistSuccess = () => {
-  $('#message').html('<p>You will not hear them here anymore...<p>')
+  $('#message').html('<p>You will not hear them around here anymore...<p>')
   $('#message').show()
-  $('#message').removeClass('hidden')
   $('#message').delay(2000).fadeOut('2000')
   getPlaylists()
 }
 
 const deletePlaylistFailure = () => {
   $('#message').html('<p>Something went wrong deleting your track... try again?<p>')
-  $('#message').removeClass('hidden')
+  $('#message').show()
   $('#message').delay(2000).fadeOut('2000')
 }
 
 const updatePlaylistSuccess = () => {
   $('#message').html('<p>Sounds good to me!<p>')
-  $('#message').removeClass('hidden')
+  $('#message').show()
   $('#message').delay(2000).fadeOut('2000')
   $('.selectPlaylist').empty()
   $('.current-playlist').empty()
@@ -431,13 +431,14 @@ const updatePlaylistSuccess = () => {
 
 const updatePlaylistFailure = () => {
   $('#message').html('<p>Something went wrong updating your playlist... try again?<p>')
-  $('#message').removeClass('hidden')
+  $('#message').show()
   $('#message').delay(2000).fadeOut('2000')
 }
 
 const updateTrackSuccess = () => {
-  $('#message').html('<p>Sounds good to me!<p>')
-  $('#message').removeClass('hidden')
+  console.log('made it')
+  $('#message').text('Updated!')
+  $('#message').show()
   $('#message').delay(2000).fadeOut('2000')
   $('.selectPlaylist').empty()
   $('.current-playlist').empty()
@@ -449,7 +450,7 @@ const updateTrackSuccess = () => {
 
 const updateTrackError = () => {
   $('#message').html('<p>Something went wrong updating your track... try again?<p>')
-  $('#message').removeClass('hidden')
+  $('#message').show()
   $('#message').delay(2000).fadeOut('2000')
 }
 
