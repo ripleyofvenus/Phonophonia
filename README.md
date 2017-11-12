@@ -14,7 +14,7 @@ API URL:  https://phonophonia.herokuapp.com/
 
 ## Screengrab
 
-![Screenshot](https://imgur.com/a/jI1tC)
+![Screenshot](https://i.imgur.com/O4w85EB.png)
 
 # Technologies Used
 - JavaScript
