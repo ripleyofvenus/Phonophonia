@@ -116,7 +116,7 @@ const getTracksSuccess = (data) => {
     $('#message').text('Make some new sounds, share them with the world!')
     $('#message').show()
     $('#message').delay(2000).fadeOut('2000')
-    $(userTracks).css('background-color', 'rgba(65, 255, 65, 0.7)')
+    // $(userTracks).css('background-color', 'rgba(65, 255, 65, 0.7)')
   }
   const showUserTracksHtml = showTracksTemplate({ tracks: userTracks })
   $('.tracks-list').append(showUserTracksHtml)
@@ -133,13 +133,7 @@ const getTracksSuccess = (data) => {
   $('.edit-track').on('click', function (event) {
     event.preventDefault()
     const thisTrackSave = $(this).parent().parent().parent().siblings()[9]
-    // console.log(thisTrackSave)
     const thisTrackCancel = $(this).parent().parent().parent().siblings()[10]
-    // console.log(thisTrackCancel)
-    // const thisTrackEdit = $(this).parent().siblings()[3]
-    // const thisTrackAdd = $(this).parent().parent().parent().siblings()[6]
-    // const thisTrackSelect = $(this).parent().parent().parent().siblings()[7]
-    // const thisTrackConfirm = $(this).parent().parent().parent().siblings()[8]
     $('.edit-track').addClass('hidden')
     $('.add-to-playlist').addClass('hidden')
     $('.delete-track').addClass('hidden')
@@ -147,13 +141,10 @@ const getTracksSuccess = (data) => {
     $(thisTrackCancel).children().removeClass('hidden')
     const trackID = $(this).parent().parent().parent().parent().attr('data-id')
     const trackTitle = $(this).parent().parent().parent().siblings()[0]
-    // console.log(trackTitle)
     trackTitle.contentEditable = true
     const trackArtist = $(this).parent().parent().parent().siblings()[2]
-    // console.log(trackArtist)
     trackArtist.contentEditable = true
     const trackURL = $(this).parent().parent().parent().siblings()[4]
-    // console.log(trackURL)
     trackURL.contentEditable = true
     $(trackTitle).css('background-color', 'rgba(255, 255, 255, 0.7)')
     $(trackArtist).css('background-color', 'rgba(255, 255, 255, 0.7)')
@@ -191,13 +182,8 @@ const getTracksSuccess = (data) => {
   $('.add-to-playlist').on('click', function (event) {
     event.preventDefault()
     const thisTrackDropdown = $(this).parent().siblings()[6]
-    // console.log(thisTrackDropdown)
-    // const thisTrackSave = $(this).parent().siblings()[8]
-    // console.log(thisTrackSave)
     const thisTrackCancel = $(this).parent().siblings()[9]
-    // console.log(thisTrackCancel)
     $(thisTrackDropdown).children().removeClass('hidden')
-    // $(thisTrackSave).children().removeClass('hidden')
     $(thisTrackCancel).children().removeClass('hidden')
     $('.add-to-playlist').addClass('hidden')
     $('.delete-track').addClass('hidden')
@@ -233,8 +219,22 @@ const getTracksError = () => {
 
 const getPlaylistsSuccess = (data) => {
   $('.playlists-list').empty()
-  const showPlaylistsHtml = showPlaylistsTemplate({ playlists: data.playlists })
-  $('.playlists-list').append(showPlaylistsHtml)
+  const userPlaylists = data.playlists.filter(playlist => playlist.user_id === store.userData.id)
+  const nonUserPlaylists = data.playlists.filter(playlist => playlist.user_id !== store.userData.id)
+  if (userPlaylists === 0) {
+    $('#message').text('You have no playlists, let us hear some! Select new playlist.')
+    $('#message').show()
+    $('#message').delay(2000).fadeOut('2000')
+  } else {
+    $('#message').text('Make some new sounds, share them with the world!')
+    $('#message').show()
+    $('#message').delay(2000).fadeOut('2000')
+    // $(userTracks).css('background-color', 'rgba(65, 255, 65, 0.7)')
+  }
+  const showUserPlaylistsHtml = showPlaylistsTemplate({ playlists: userPlaylists })
+  $('.playlists-list').append(showUserPlaylistsHtml)
+  const showNonUserPlaylistsHtml = showPlaylistsTemplate({ playlists: nonUserPlaylists })
+  $('.playlists-list').append(showNonUserPlaylistsHtml)
   $('.select-playlist').on('click', function (event) {
     event.preventDefault()
     const id = $(this).parent().parent().data('id')
