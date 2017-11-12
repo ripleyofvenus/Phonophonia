@@ -57,7 +57,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 }
 
 .playlists-list, .tracks-list {
-  background: green;
+  // background: green;
   height: 50%;
   width: 100%;
 }
@@ -76,21 +76,21 @@ p {
 }
 
 .largest-spacer {
-  background-color: black;
+  // background-color: black;
   width: 20%;
   height: 50px;
   // float: left;
 }
 
 .large-spacer {
-  background-color: green;
+  // background-color: green;
   width: 35%;
   height: 50px;
   float: left;
 }
 
 .medium-spacer {
-  background-color: yellow;
+  // background-color: yellow;
   width: 3%;
   height: 50px;
   position: relative;
@@ -98,14 +98,14 @@ p {
 }
 
 .small-spacer {
-  background-color: orange;
+  // background-color: orange;
   width: 23%;
   height: 20px;
   // float: left;
 }
 
 .smallest-spacer {
-  background-color: pink;
+  // background-color: pink;
   width: 15%;
   height: 20px;
   float: left;
@@ -126,7 +126,7 @@ p {
   width: 100%;
   border: 5px;
   text-align: center;
-  background-color: grey;
+  // background-color: grey;
 }
 
 .container-fluid {
@@ -159,17 +159,16 @@ h2 {
   margin: 0px;
 }
 
-// html,
+html,
 body {
   margin: 0;
   padding: 0;
-  border: none;
-  // background-image: linear-gradient(to right, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0)), url('https://media.giphy.com/media/ZgZIkO614AKEo/giphy.gif');
   background: linear-gradient(to right, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0)), linear-gradient(to right, rgba(255, 255, 255, 0), rgba(134, 241, 164, 1)), url('https://media.giphy.com/media/ZgZIkO614AKEo/giphy.gif') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  height: 100%;
 }
 
 .message {
