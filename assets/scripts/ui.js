@@ -127,8 +127,18 @@ const getTracksSuccess = (data) => {
   })
   $('.edit-track').on('click', function (event) {
     event.preventDefault()
-    $('.save-changes').removeClass('hidden')
-    $('.cancel-to-playlist').removeClass('hidden')
+    const thisTrackSave = $(this).parent().siblings()[1]
+    const thisTrackCancel = $(this).parent().siblings()[2]
+    // const thisTrackEdit = $(this).parent().siblings()[3]
+    // const thisTrackAdd = $(this).parent().parent().parent().siblings()[6]
+    // const thisTrackSelect = $(this).parent().parent().parent().siblings()[7]
+    // const thisTrackConfirm = $(this).parent().parent().parent().siblings()[8]
+    $('.edit-track').addClass('hidden')
+    $('.add-to-playlist').addClass('hidden')
+    $('.delete-track').addClass('hidden')
+    // $('.').addClass('hidden')
+    $(thisTrackSave).children().removeClass('hidden')
+    $(thisTrackCancel).children().removeClass('hidden')
     const trackID = $(this).parent().parent().parent().parent().attr('data-id')
     const trackTitle = $(this).parent().parent().parent().siblings()[0]
     // console.log(trackTitle)
@@ -160,10 +170,12 @@ const getTracksSuccess = (data) => {
     $(trackURL).css('background-color', 'initial')
     $('.confirm-to-playlist').addClass('hidden')
     $('.selectPlaylist').addClass('hidden')
-    $('.add-to-playlist').removeClass('hidden')
-    $('.selectPlaylist').empty()
     $('.cancel-to-playlist').addClass('hidden')
     $('.save-changes').addClass('hidden')
+    $('.add-to-playlist').removeClass('hidden')
+    $('.delete-track').removeClass('hidden')
+    $('.edit-track').removeClass('hidden')
+    $('.selectPlaylist').empty()
   })
   $('.add-to-playlist').on('click', function (event) {
     event.preventDefault()
