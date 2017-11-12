@@ -242,20 +242,20 @@ const getPlaylistsSuccess = (data) => {
       .then(currentPlaylistSuccess)
       .catch(currentPlaylistError)
   })
-  $('.edit-playlist').on('click', function (event) {
-    event.preventDefault()
-    $('.confirm-changes-playlist').removeClass('hidden')
-    const playlistID = $(this).parent().parent().attr('data-id')
-    const playlistName = $(this).parent().siblings()[0]
-    playlistName.contentEditable = true
-    // $(trackTitle).css('background-color', 'rgba(39, 43, 43, 0.7)')
-    // $(trackArtist).css('background-color', 'rgba(39,43,43, 0.7)')
-    // $(trackURL).css('background-color', 'rgba(39,43,43, 0.7)')
-    // $('.save-changes').on('click', function () {
-    //   onSaveTrack(trackID, trackTitle, trackArtist, trackURL)
-    // })
-    // $('#message').text('Ch-ch-ch-ch-changes!')
-  })
+  // $('.edit-playlist').on('click', function (event) {
+  //   event.preventDefault()
+  //   $('.confirm-changes-playlist').removeClass('hidden')
+  //   const playlistID = $(this).parent().parent().attr('data-id')
+  //   const playlistName = $(this).parent().siblings()[0]
+  //   playlistName.contentEditable = true
+  // $(trackTitle).css('background-color', 'rgba(39, 43, 43, 0.7)')
+  // $(trackArtist).css('background-color', 'rgba(39,43,43, 0.7)')
+  // $(trackURL).css('background-color', 'rgba(39,43,43, 0.7)')
+  // $('.save-changes').on('click', function () {
+  //   onSaveTrack(trackID, trackTitle, trackArtist, trackURL)
+  // })
+  // $('#message').text('Ch-ch-ch-ch-changes!')
+  // })
   $('.delete-playlist').on('click', function (event) {
     event.preventDefault()
     const id = $(this).parent().parent().parent().parent().attr('data-id')
@@ -295,6 +295,7 @@ const newPlaylistError = () => {
 }
 
 const currentPlaylistSuccess = (data) => {
+  // console.log(data)
   $('.current-playlist').empty()
   const showCurrentHtml = showCurrentTemplate({ playlist: data.playlist })
   $('.current-playlist').append(showCurrentHtml)
@@ -365,10 +366,17 @@ const populatePlaylistList = (data) => {
 
 // ISSUE HERE WITH SHOWING THE CURRENT PLAYLIST AS PREVIEW
 const selectedPlaylist = (userPlaylists, value) => {
+  // console.log(userPlaylists)
+  // console.log(value)
   $('.current-playlist').empty()
-  const pickPlaylist = userPlaylists.filter(playlist => playlist.id === value)
-  const showCurrentHtml = showCurrentTemplate({ playlist: pickPlaylist })
-  $('.current-playlist').append(showCurrentHtml)
+//   const pickPlaylist =
+//   { playlist: {
+//     name: userPlaylists.name,
+//     track_ids: userPlaylists.
+//   }
+// }
+  // const showCurrentHtml = showCurrentTemplate({ playlist: userPlaylists })
+  // $('.current-playlist').append(showCurrentHtml)
   $('.confirm-to-playlist').on('click', function (event) {
     event.preventDefault()
     const playlistID = value
