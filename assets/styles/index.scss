@@ -1,6 +1,14 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
+button, #sign-out {
+  width: 150px;
+  height: 30px;
+  padding: 10px;
+  color: red;
+  text-shadow: 5px;
+}
+
 #footerwrap {
   position: fixed;
   bottom: 0;

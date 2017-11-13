@@ -3,6 +3,7 @@
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('../ui')
+const store = require('./../store')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -22,7 +23,7 @@ const onSignIn = function (event) {
 
 const onSignOut = function (event) {
   event.preventDefault()
-  const data = getFormFields(this)
+  const data = store.userData.id
   api.signOut(data)
     .done(ui.signOutSuccess)
     .catch(ui.failure)
