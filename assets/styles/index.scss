@@ -1,20 +1,44 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
-button, #sign-out {
-  width: 150px;
-  height: 30px;
-  padding: 10px;
-  color: red;
-  text-shadow: 5px;
+#sign-up-button, #change-password-button, #new-sound-button, #new-playlist-button {
+    background-color: rgb(77,196,180);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 6px;
+    color: #fff;
+    // position: relative;
+    font-size: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    // float: right;
+    // top:-10px;
+    // right:-10px;
+    // left:-10px;
+    // bottom:-10px;
+    // outline:1px solid red;
+    text-align: center;
+    display: block;
+    margin-right: 15px;
+    margin-top: 17px;
+}
+
+#new-sound-button, #new-playlist-button {
+  margin: 0 auto;
+  border: 10px;
+}
+
+.title #sign-in-button {
+  float: right;
 }
 
 #footerwrap {
   position: fixed;
   bottom: 0;
-  width: 50%;
+  width: 100%;
   text-align: center;
-  margin: 0 auto;
+  margin: 0px;
 }
 
 .contents {
@@ -32,6 +56,8 @@ button, #sign-out {
   height: 100%;
   float: left;
   margin: 20px 0 0 20px;
+  overflow: scroll;
+  border-radius: 5%;
 }
 
 .current-playlist-title {
@@ -44,6 +70,7 @@ button, #sign-out {
   background: rgba(38,151,226,0.5);
   width: 100%;
   height: 95%;
+  // overflow: scroll;
 }
 
 .tracks-container, .playlists-container {
@@ -55,6 +82,7 @@ button, #sign-out {
   display: block;
   margin: 20px;
   overflow: scroll;
+  border-radius: 5%;
   // overflow: auto;
 }
 
@@ -98,10 +126,10 @@ h4, h1, .current-playlist-tracks, .signature {
 }
 
 .largest-spacer {
-  // background-color: black;
+  background-color: black;
   width: 20%;
   height: 50px;
-  // float: left;
+  float: left;
 }
 
 .large-spacer {
@@ -133,13 +161,28 @@ h4, h1, .current-playlist-tracks, .signature {
   float: left;
   position: relative;
 }
+//
+// .footer-container {
+//   background-color: green;
+//   width: 100%;
+// }
+
+.signature {
+  width: 100%;
+  height: 20px;
+  float: right;
+  background: linear-gradient(to left, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0));
+  // position: relative;
+  // background-color: red;
+}
 
 .title {
   width: 100%;
   position: absolute;
   text-align: center;
-  margin: 6px;
-  // background: linear-gradient(to left, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0));
+  margin: 0px;
+  padding: 0px;
+  background: linear-gradient(to left, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0));
   // background-color: grey;
 }
 
@@ -148,6 +191,8 @@ h4, h1, .current-playlist-tracks, .signature {
   width: 100%;
   border: 5px;
   text-align: center;
+  margin: 0px;
+  padding: 0px;
   // background-color: grey;
 }
 
@@ -196,6 +241,7 @@ body {
 
 .message {
   // text-align: center;
+  background: linear-gradient(to left, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0));
   font-size: 30px;
   color: white;
   display: block;
@@ -209,22 +255,37 @@ body {
   height: 50px;
 }
 
-#sign-out {
-  background-color: #ccc;
+.sign-out {
+  // overflow: hidden;
+  text-align: center;
+}
+
+#sign-out, #sign-in-button {
+  background-color: rgb(77,196,180);
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
-  border-radius:6px;
+  border-radius: 6px;
   color: #fff;
-  font-family: 'Oswald';
+  position: relative;
   font-size: 20px;
   text-decoration: none;
   cursor: pointer;
-  border:none;
+  border: none;
+  float: right;
+  // top:-10px;
+  // right:-10px;
+  // left:-10px;
+  // bottom:-10px;
+  // outline:1px solid red;
+  text-align: center;
+  display: block;
+  margin-right: 10px;
+  margin-top: 10px;
 }
 
-#sign-out:hover {
+#sign-out:hover, #sign-in-button:hover, #new-sound-button:hover, #new-playlist-button:hover, #change-password-button:hover, #sign-up-button:hover {
   border: none;
-  background:red;
+  background: rgb(133,255,51);
   box-shadow: 0px 0px 1px #777;
 }
 
@@ -236,16 +297,19 @@ body {
 }
 
 .sound-row {
-  position: relative;
-  float: right;
+  // position: relative;
+  // float: right;
+  text-align: center;
   margin: 10px;
   border-radius: 10px;
+  // align-items: center;
 }
 
-.signature {
-  position: relative;
-  float: right;
-}
+// .sound-row, #new-sound-button, #new-playlist-button {
+//   position:relative;
+//    top: 50%;
+//    transform: translateY(-75%)
+// }
 
 #right-div {
   float: right;
