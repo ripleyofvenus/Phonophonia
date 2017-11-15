@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>🎧 Phonophonia🎧 </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body class="container-fluid">
+<br>
+  <!-- END OF AUTH FUNCTION Buttons -->
+  <div class="row header">
+    <h1 class="title"><b>Phonophonia</b></h1>
+  </div>
+  <!-- AUTH FUNCTIONS BUTTONS-->
+  <div class="button-row row">
+  <button type="button" class="btn btn-primary sign-up" id="sign-up-button" data-toggle="modal" data-target="#signup">
+  Sign Up
+  </button>
+  <button type="button" class="hidden btn btn-primary change-password" id="change-password-button" data-toggle="modal" data-target="#changepassword">
+  Change Password
+  </button>
+</div>
+    <br>
+    <div class="row blurb">
+    <button type="submit" class="btn btn-primary hidden sign-out" id="sign-out" name="submit">Sign Out</button>
+    <button type="button" class="btn btn-primary sign-in" id="sign-in-button" data-toggle="modal" data-target="#signin">
+    Sign In
+    </button>
+    <br>
+      <h2><b>A Resoundingly Sound Collection of Sounds</b></h2>
+    </div>
+  <!-- New Sound Form -->
+    <div class="row">
+      <div class="text">
+    <div class="smallest-spacer col-xs-2"></div>
+      <p><strong>"Phono" n. Sound. Vibrations that travel through the air or another medium and can be heard when they reach a person's or animal's ear.</p>
+      <div class="smallest-spacer col-xs-2"></div>
+      <br>
+      <div class="small-spacer col-xs-2"></div>
+      <p>"Phonia" adj. denoting a type of plug, and the corresponding socket, used with audio and video equipment.</strong></p>
+      <div class="small-spacer col-xs-2"></div>
+    </div>
+  </div>
+<div class="message-block container">
+    <div class="message" id='message'></div>
+</div>
+<br>
+<br>
+<div class="sound-row column">
+<button type="button" class="hidden btn btn-primary new-sound" id="new-sound-button" data-toggle="modal" data-target="#newsound">
+Add Sound
+</button>
+<button type="button" class="hidden btn btn-primary new-playlist" id="new-playlist-button" data-toggle="modal" data-target="#newplaylist">
+New Playlist
+</button>
+</div>
+  <!-- Contents -->
+  <div class='row'>
+    <div class='contents hidden'>
+      <div class='current-playlist-container'>
+          <div class='current-playlist-title'>
+          <h2>Current Playlist</h2>
+          </div>
+          <div class='current-playlist'>
+          </div>
+        </div>
+      </div>
+        <div class='tracks-container hidden'>
+          <div class='tracks-title'>
+          <h2>Tracks</h2>
+          </div>
+          <div class='tracks-list'>
+          </div>
+        </div>
+        <div class='playlists-container hidden'>
+          <div class='playlists-title'>
+            <h2>Playlists</h2>
+          </div>
+          <div class='playlists-list'>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="medium-spacer col-xs-2"></div>
+  <!-- Footer Wrap -->
+  <div id="footerwrap">
+    <div class="medium-spacer col-xs-2"></div>
+    <div class="footer-container">
+      <!-- Say goodnight Gracie -->
+      <div class="signature col-lg-12">
+        <b>Code by Madelaine Ripley</b>
+      </div>
+    </div>
+  </div>
+  <!-- New Contents Modal -->
+  <!--  New Sound Modal -->
+<div class="modal fade" id="newsound" tabindex="-1" role="dialog" aria-labelledby="newTrackLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newSoundLabel">Title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+       </div>
+       <div class="modal-body">
+         <form id="new-sound">
+           <fieldset>
+             <input type="text" name="track[title]" value="" placeholder="Title">
+             <input type="text" name="track[artist]" value="" placeholder="Artist">
+             <input type="text" name="track[host_url]" value="" placeholder="https://...">
+             <input type="submit" name="submit" value="Add Sound">
+           </fieldset>
+         </form>
+       </div>
+     </div>
+  </div>
+</div>
+<!--  New Playlist Modal -->
+<div class="modal fade" id="newplaylist" tabindex="-1" role="dialog" aria-labelledby="newTrackLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="newPlaylistLabel">Title</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+      </button>
+     </div>
+     <div class="modal-body">
+       <form id="new-playlist">
+         <fieldset>
+           <input type="text" name="playlist[name]" value="" placeholder="Name">
+           <input type="submit" name="submit" value="Create Playlist">
+         </fieldset>
+       </form>
+     </div>
+   </div>
+</div>
+</div>
+  <!-- Auth Function Modals -->
+  <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+          <form id="sign-up">
+            <fieldset>
+              <input type="text" name="credentials[email]" value="" placeholder="email">
+              <input type="password" name="credentials[password]" value="" placeholder="password">
+              <input type="password" name="credentials[password_confirmation]" value="" placeholder="password confirmation">
+              <input type="submit" name="submit" value="Sign Up">
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+          <form id="sign-in">
+            <fieldset>
+              <input type="text" name="credentials[email]" value="" placeholder="email">
+              <input type="password" name="credentials[password]" value="" placeholder="password">
+              <input type="submit" name="submit" value="Sign In">
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="changepassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+          <form id="change-password">
+            <fieldset>
+              <input type="password" name="passwords[old]" value="" placeholder="Old Password">
+              <input type="password" name="passwords[new]" value="" placeholder="New Password">
+              <input type="submit" name="submit" value="Change Password">
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
