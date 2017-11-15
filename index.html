@@ -14,47 +14,30 @@
 </head>
 
 <body class="container-fluid">
+<br>
+  <!-- END OF AUTH FUNCTION Buttons -->
+  <div class="row header">
+    <h1 class="title"><b>Phonophonia</b></h1>
+  </div>
   <!-- AUTH FUNCTIONS BUTTONS-->
   <div class="button-row row">
   <button type="button" class="btn btn-primary sign-up" id="sign-up-button" data-toggle="modal" data-target="#signup">
   Sign Up
   </button>
-  <button type="button" class="btn btn-primary sign-in" id="sign-in-button" data-toggle="modal" data-target="#signin">
-  Sign In
-  </button>
   <button type="button" class="hidden btn btn-primary change-password" id="change-password-button" data-toggle="modal" data-target="#changepassword">
   Change Password
   </button>
-  <div class="hidden sign-out">
-  <form id="sign-out">
-    <!-- <fieldset> -->
-      <button type="submit" name="submit">Sign Out</button>
-    <!-- </fieldset> -->
-  </form>
-  </div>
 </div>
-      <!-- New Sound Form -->
-    <div class="sound-row row">
-      <button type="button" class="hidden btn btn-primary new-sound" id="new-sound-button" data-toggle="modal" data-target="#newsound">
-      Add Sound
-      </button>
-      <button type="button" class="hidden btn btn-primary new-playlist" id="new-playlist-button" data-toggle="modal" data-target="#newplaylist">
-      New Playlist
-      </button>
-    </div>
-<br>
-  <!-- END OF AUTH FUNCTION Buttons -->
-  <div class="row header">
-    <!-- <div class="large-spacer col-lg-3 col-xs-2"></div> -->
-    <h1 class="title"><b>🎧 Phonophonia🎧 </b></h1>
-    <!-- <div class="large-spacer col-lg-3 col-xs-2"></div> -->
-  </div>
     <br>
     <div class="row blurb">
-    <div class="medium-spacer col-xs-2"></div>
+    <button type="submit" class="btn btn-primary hidden sign-out" id="sign-out" name="submit">Sign Out</button>
+    <button type="button" class="btn btn-primary sign-in" id="sign-in-button" data-toggle="modal" data-target="#signin">
+    Sign In
+    </button>
+    <br>
       <h2><b>A Resoundingly Sound Collection of Sounds</b></h2>
     </div>
-  <br>
+  <!-- New Sound Form -->
     <div class="row">
       <div class="text">
     <div class="smallest-spacer col-xs-2"></div>
@@ -67,15 +50,20 @@
     </div>
   </div>
 <div class="message-block container">
-  <!-- <div class="small-spacer col-xs-2"></div> -->
     <div class="message" id='message'></div>
 </div>
 <br>
+<br>
+<div class="sound-row column">
+<button type="button" class="hidden btn btn-primary new-sound" id="new-sound-button" data-toggle="modal" data-target="#newsound">
+Add Sound
+</button>
+<button type="button" class="hidden btn btn-primary new-playlist" id="new-playlist-button" data-toggle="modal" data-target="#newplaylist">
+New Playlist
+</button>
+</div>
   <!-- Contents -->
-<!-- <div class='container'> -->
-<!-- <div class="medium-spacer col-xs-2"></div> -->
   <div class='row'>
-    <!-- <div class="largest-spacer col-xs-2"></div> -->
     <div class='contents hidden'>
       <div class='current-playlist-container'>
           <div class='current-playlist-title'>
@@ -85,7 +73,6 @@
           </div>
         </div>
       </div>
-      <!-- <br> -->
         <div class='tracks-container hidden'>
           <div class='tracks-title'>
           <h2>Tracks</h2>
@@ -100,17 +87,16 @@
           <div class='playlists-list'>
           </div>
         </div>
-        <!-- <div class="medium-spacer col-xs-2" id="right-div"></div> -->
       </div>
-    <!-- <div class="largest-spacer col-xs-2"></div> -->
-<!-- </div> -->
+      <br>
+      <div class="medium-spacer col-xs-2"></div>
   <!-- Footer Wrap -->
   <div id="footerwrap">
-    <div class="footer container">
-
+    <div class="medium-spacer col-xs-2"></div>
+    <div class="footer-container">
       <!-- Say goodnight Gracie -->
       <div class="signature col-lg-12">
-        <b>Created by Madelaine Ripley</b>
+        <b>Code by Madelaine Ripley</b>
       </div>
     </div>
   </div>
@@ -135,9 +121,6 @@
            </fieldset>
          </form>
        </div>
-       <!-- <div class="modal-footer">
-         <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal" name="submit" value="Save">Save</button>
-       </div> -->
      </div>
   </div>
 </div>
@@ -159,9 +142,6 @@
          </fieldset>
        </form>
      </div>
-     <!-- <div class="modal-footer">
-       <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal" name="submit" value="Save">Save</button>
-     </div> -->
    </div>
 </div>
 </div>
@@ -185,9 +165,6 @@
             </fieldset>
           </form>
         </div>
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div> -->
       </div>
     </div>
   </div>
@@ -209,9 +186,6 @@
             </fieldset>
           </form>
         </div>
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div> -->
       </div>
     </div>
   </div>
@@ -227,15 +201,11 @@
         <div class="modal-body">
           <form id="change-password">
             <fieldset>
-              <!-- <h3>Change Password</h3> -->
               <input type="password" name="passwords[old]" value="" placeholder="Old Password">
               <input type="password" name="passwords[new]" value="" placeholder="New Password">
               <input type="submit" name="submit" value="Change Password">
             </fieldset>
           </form>
-          <!-- <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div> -->
         </div>
       </div>
     </div>
